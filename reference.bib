@@ -1,0 +1,496 @@
+% ============================================================
+% References for IISWC 2026 — Dead-Entry TLB Misses paper
+% ============================================================
+
+% ---- Simulation platform ----
+
+@inproceedings{accelsim,
+  title     = {{Accel-Sim}: An Extensible Simulation Framework for Validated {GPU} Modeling},
+  author    = {Khairy, Mahmoud and Shen, Zhesheng and Aamodt, Tor M. and Rogers, Timothy G.},
+  booktitle = {Proc. International Symposium on Computer Architecture (ISCA)},
+  year      = {2020}
+}
+
+@inproceedings{gpgpusim,
+  title     = {Analyzing {CUDA} Workloads Using a Detailed {GPU} Simulator},
+  author    = {Bakhoda, Ali and Yuan, George L. and Fung, Wilson W. L. and Wong, Henry and Aamodt, Tor M.},
+  booktitle = {Proc. International Symposium on Performance Analysis of Systems and Software (ISPASS)},
+  year      = {2009}
+}
+
+% ---- State-of-the-art GPU TLB prefetching / MSHR compression ----
+
+@inproceedings{latpc,
+  title     = {{LATPC}: Locality-Aware {TLB} Prefetching and {MSHR} Compression},
+  author    = {Ha, Yeonan and others},
+  booktitle = {Proc. International Symposium on Microarchitecture (MICRO)},
+  year      = {2025},
+  address   = {Seoul, Republic of Korea},
+  month     = oct
+}
+
+% ---- Benchmark suites ----
+
+@inproceedings{rodinia,
+  title     = {Rodinia: A Benchmark Suite for Heterogeneous Computing},
+  author    = {Che, Shuai and Boyer, Michael and Meng, Jiayuan and Tarjan, David and Sheaffer, Jeremy W. and Lee, Sang-Ha and Skadron, Kevin},
+  booktitle = {Proc. IEEE International Symposium on Workload Characterization (IISWC)},
+  year      = {2009}
+}
+
+@inproceedings{polybench,
+  title     = {Auto-Tuning a High-Level Language Targeted to {GPU} Codes},
+  author    = {Grauer-Gray, Scott and Xu, Lifan and Searles, Robert and Ayalasomayajula, Sudhee and Cavazos, John},
+  booktitle = {Proc. Innovative Parallel Computing (InPar)},
+  year      = {2012}
+}
+
+@inproceedings{lonestar,
+  title     = {A Quantitative Study of Irregular Programs on {GPUs}},
+  author    = {Burtscher, Martin and Nasre, Rupesh and Pingali, Keshav},
+  booktitle = {Proc. IEEE International Symposium on Workload Characterization (IISWC)},
+  year      = {2012}
+}
+
+@techreport{parboil,
+  title       = {Parboil: A Revised Benchmark Suite for Scientific and Commercial Throughput Computing},
+  author      = {Stratton, John A. and Rodrigues, Christopher and Sung, I-Jui and Obeid, Nady and Chang, Li-Wen and Anssari, Nasser and Liu, Geng Daniel and Hwu, Wen-mei W.},
+  institution = {University of Illinois at Urbana-Champaign},
+  number      = {IMPACT-12-01},
+  year        = {2012}
+}
+
+@inproceedings{pannotia,
+  title     = {Pannotia: Understanding Irregular {GPGPU} Graph Applications},
+  author    = {Che, Shuai and Beckmann, Bradford M. and Reinhardt, Steven K. and Skadron, Kevin},
+  booktitle = {Proc. IEEE International Symposium on Workload Characterization (IISWC)},
+  year      = {2013}
+}
+
+% ---- Prior TLB / address-translation work ----
+
+@inproceedings{avatar,
+  title     = {A Case for Speculative Address Translation with Rapid Validation for {GPUs}},
+  author    = {Park, Junhyeok and Kwon, Yongho Lee and Jeong, Sanghoon and Hong, Gwangeon Byeon and Jihun Yoon and Prashant J. Nair and Seokin Hong},
+  booktitle = {Proc. International Symposium on High-Performance Computer Architecture (HPCA)},
+  year      = {2024}
+}
+
+@inproceedings{valkyrie,
+  title     = {Valkyrie: Leveraging Inter-{TLB} Locality to Enhance {GPU} Performance},
+  author    = {Baruah, Trinayan and Sun, Yifan and Mojumder, Saiful A. and Abell{\'a}n, Jos{\'e} L. and Ukidave, Yash and Joshi, Ajay and Rubin, Norman and Kim, John and Kaeli, David},
+  booktitle = {Proc. International Symposium on High-Performance Computer Architecture (HPCA)},
+  year      = {2020}
+}
+
+@inproceedings{mosaic,
+  title     = {Mosaic: A {GPU} Memory Manager with Application-Transparent Support for Multiple Page Sizes},
+  author    = {Ausavarungnirun, Rachata and Landgraf, Joshua and Miller, Vance and Ghose, Saugata and Gandhi, Jayneel and Rossbach, Christopher J. and Mutlu, Onur},
+  booktitle = {Proc. International Symposium on Microarchitecture (MICRO)},
+  year      = {2017}
+}
+
+@inproceedings{avoiding_tlb,
+  title     = {{MASK}: Redesigning the {GPU} Memory Hierarchy to Support Multi-Application Concurrency},
+  author    = {Ausavarungnirun, Rachata and Miller, Vance and Landgraf, Joshua and Ghose, Saugata and Gandhi, Jayneel and Jog, Adwait and Rossbach, Christopher J. and Mutlu, Onur},
+  booktitle = {Proc. International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS)},
+  year      = {2018}
+}
+
+@inproceedings{colt,
+  title     = {{CoLT}: Coalesced Large-Reach {TLBs}},
+  author    = {Pham, Binh and Vaidyanathan, Viswanathan and Jaleel, Aamer and Bhattacharjee, Abhishek},
+  booktitle = {Proc. International Symposium on Microarchitecture (MICRO)},
+  year      = {2012}
+}
+
+@inproceedings{cta_schedule,
+  title     = {{CTA}-Aware Prefetching and Scheduling for {GPU}},
+  author    = {Koo, Gunjae and Jeon, Hyeran and Liu, Zhenhong and Sung, Nam Sung and Annavaram, Murali},
+  booktitle = {Proc. IEEE International Parallel and Distributed Processing Symposium (IPDPS)},
+  year      = {2018}
+}
+
+@inproceedings{mshr_mgmt,
+  title     = {Dynamically Linked {MSHRs} for Adaptive Miss Handling in {GPUs}},
+  author    = {Gu, Yongbin and Chen, Lizhong},
+  booktitle = {Proc. International Conference on Supercomputing (ICS)},
+  year      = {2019}
+}
+
+@inproceedings{translation_cpu,
+  title     = {Supporting x86-64 Address Translation for 100s of {GPU} Lanes},
+  author    = {Power, Jason and Hill, Mark D. and Wood, David A.},
+  booktitle = {Proc. International Symposium on High-Performance Computer Architecture (HPCA)},
+  year      = {2014}
+}
+
+@inproceedings{shared_tlb,
+  title     = {Shared Last-Level {TLBs} for Chip Multiprocessors},
+  author    = {Bhattacharjee, Abhishek and Lustig, Daniel and Martonosi, Margaret},
+  booktitle = {Proc. International Symposium on High-Performance Computer Architecture (HPCA)},
+  year      = {2011}
+}
+
+@inproceedings{mlp,
+  title     = {A Case for {MLP}-Aware Cache Replacement},
+  author    = {Qureshi, Moinuddin K. and Lynch, Daniel N. and Mutlu, Onur and Patt, Yale N.},
+  booktitle = {Proc. International Symposium on Computer Architecture (ISCA)},
+  year      = {2006}
+}
+
+% ---- Recent GPU TLB / address-translation work (2020+) ----
+
+@inproceedings{snakebyte,
+  title     = {{SnakeByte}: A {TLB} Design with Adaptive and Recursive Page Merging in {GPUs}},
+  author    = {Lee, Jiwon and Lee, Ju Min and Oh, Yunho and Song, William J. and Ro, Won Woo},
+  booktitle = {Proc. International Symposium on High-Performance Computer Architecture (HPCA)},
+  year      = {2023}
+}
+
+@inproceedings{star,
+  title     = {{STAR}: Sub-Entry Sharing-Aware {TLB} for Multi-Instance {GPU}},
+  author    = {Li, Bingyao and Wang, Yueqi and Wang, Tianyu and Eeckhout, Lieven and Yang, Jun and Tang, Xulong},
+  booktitle = {Proc. International Symposium on Microarchitecture (MICRO)},
+  year      = {2024}
+}
+
+@inproceedings{r2d2,
+  title     = {{R2D2}: Removing Redundancy Utilizing Linearity of Address Generation in {GPUs}},
+  author    = {Ha, Dongho and Oh, Yunho and Ro, Won Woo},
+  booktitle = {Proc. International Symposium on Computer Architecture (ISCA)},
+  year      = {2023}
+}
+
+@inproceedings{heliostat,
+  title     = {Heliostat: Harnessing Ray Tracing Accelerators for Page Table Walks},
+  author    = {Feng, Yuan and Li, Yuke and Lee, Jiwon and Ro, Won Woo and Jeon, Hyeran},
+  booktitle = {Proc. International Symposium on Computer Architecture (ISCA)},
+  year      = {2024}
+}
+
+@inproceedings{trans_fw,
+  title     = {{Trans-FW}: Short Circuiting Page Table Walk in Multi-{GPU} Systems via Remote Forwarding},
+  author    = {Li, Bingyao and Yin, Jieming and Holey, Anup and Zhang, Youtao and Yang, Jun and Tang, Xulong},
+  booktitle = {Proc. International Symposium on High-Performance Computer Architecture (HPCA)},
+  year      = {2023}
+}
+
+@inproceedings{barre_chord,
+  title     = {Barre Chord: Efficient Virtual Memory Translation for Multi-Chip-Module {GPUs}},
+  author    = {Feng, Yuan and Na, Seonjin and Kim, Hyesoon and Jeon, Hyeran},
+  booktitle = {Proc. International Symposium on Computer Architecture (ISCA)},
+  year      = {2024}
+}
+
+@inproceedings{elastic_cuckoo,
+  title     = {Elastic Cuckoo Page Tables: Rethinking Virtual Memory Translation for Parallelism},
+  author    = {Skarlatos, Dimitrios and Kokolis, Apostolos and Xu, Tianyin and Torrellas, Josep},
+  booktitle = {Proc. International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS)},
+  year      = {2020}
+}
+
+@inproceedings{translation_ranger,
+  title     = {Translation Ranger: Operating System Support for Contiguity-Aware {TLBs}},
+  author    = {Yan, Zi and Nellans, David and Lustig, Daniel and Bhattacharjee, Abhishek},
+  booktitle = {Proc. International Symposium on Computer Architecture (ISCA)},
+  year      = {2024}
+}
+
+@inproceedings{oasis,
+  title     = {{OASIS}: Object-Aware Page Management for Multi-{GPU} Systems},
+  author    = {Wang, Yueqi and Li, Bingyao and Ibn Ziad, Mohamed Tarek and Jaleel, Aamer and Yang, Jun and Tang, Xulong},
+  booktitle = {Proc. International Symposium on Computer Architecture (ISCA)},
+  year      = {2025}
+}
+
+% ---- Dead-block / dead-entry prediction (DEPOT's intellectual lineage) ----
+
+@inproceedings{dop_hpca21,
+  title     = {Dead Page and Dead Block Predictors: Cleaning {TLBs} and Caches Together},
+  author    = {Mazumdar, Chandrashis and Mitra, Prachatos and Basu, Arkaprava},
+  booktitle = {Proc. International Symposium on High-Performance Computer Architecture (HPCA)},
+  year      = {2021}
+}
+
+@inproceedings{evicted_addr_filter,
+  title     = {The Evicted-Address Filter: A Unified Mechanism to Address Both Cache Pollution and Thrashing},
+  author    = {Seshadri, Vivek and Mutlu, Onur and Kozuch, Michael A. and Mowry, Todd C.},
+  booktitle = {Proc. International Conference on Parallel Architectures and Compilation Techniques (PACT)},
+  year      = {2012}
+}
+
+@inproceedings{sdbp_micro10,
+  title     = {Sampling Dead Block Prediction for Last-Level Caches},
+  author    = {Khan, Samira Manabi and Tian, Yingying and Jim{\'e}nez, Daniel A.},
+  booktitle = {Proc. International Symposium on Microarchitecture (MICRO)},
+  year      = {2010}
+}
+
+% ---- Additional TLB / translation prefetching ----
+
+@inproceedings{bhattacharjee_ttp,
+  title     = {Translation-Triggered Prefetching},
+  author    = {Bhattacharjee, Abhishek},
+  booktitle = {Proc. International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS)},
+  year      = {2017}
+}
+
+@inproceedings{margaritov_pat,
+  title     = {Prefetched Address Translation},
+  author    = {Margaritov, Artemiy and Ustiugov, Dmitrii and Bugnion, Edouard and Grot, Boris},
+  booktitle = {Proc. International Symposium on Microarchitecture (MICRO)},
+  year      = {2019}
+}
+
+@inproceedings{baruah_griffin,
+  title     = {Griffin: Hardware-Software Support for Efficient Page Migration in Multi-{GPU} Systems},
+  author    = {Baruah, Trinayan and Sun, Yifan and Dincer, A. Tolga and Mojumder, Saiful A. and Abell{\'a}n, Jos{\'e} L. and Ukidave, Yash and Joshi, Ajay and Rubin, Norman and Kim, John and Kaeli, David},
+  booktitle = {Proc. International Symposium on High-Performance Computer Architecture (HPCA)},
+  year      = {2020}
+}
+
+@inproceedings{pham_spectlb,
+  title     = {{SpecTLB}: A Mechanism for Speculative Address Translation},
+  author    = {Barr, Thomas W. and Cox, Alan L. and Rixner, Scott},
+  booktitle = {Proc. International Symposium on Computer Architecture (ISCA)},
+  year      = {2011}
+}
+
+@inproceedings{pham_clustering,
+  title     = {Increasing {TLB} Reach by Exploiting Clustering in Page Translations},
+  author    = {Pham, Binh and Bhattacharjee, Abhishek and Eckert, Yasuko and Loh, Gabriel H.},
+  booktitle = {Proc. International Symposium on High-Performance Computer Architecture (HPCA)},
+  year      = {2014}
+}
+
+@inproceedings{kim_batch,
+  title     = {Batch-Aware Unified Memory Management in {GPUs} for Irregular Workloads},
+  author    = {Kim, Hyojong and Sim, Jaewoong and Gera, Prasun and Hadidi, Ramyad and Kim, Hyesoon},
+  booktitle = {Proc. International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS)},
+  year      = {2020}
+}
+
+% ---- Stacked similar papers (citation-only adds, no prose changes) ----
+
+@inproceedings{kandiraju_distance,
+  title     = {Going the Distance for {TLB} Prefetching: An Application-Driven Study},
+  author    = {Kandiraju, Gokul B. and Sivasubramaniam, Anand},
+  booktitle = {Proc. International Symposium on Computer Architecture (ISCA)},
+  year      = {2002}
+}
+
+@inproceedings{bhattacharjee_large,
+  title     = {Large-Reach Memory Management Unit Caches},
+  author    = {Bhattacharjee, Abhishek},
+  booktitle = {Proc. International Symposium on Microarchitecture (MICRO)},
+  year      = {2013}
+}
+
+@inproceedings{margaritov_learned,
+  title     = {Virtual Address Translation via Learned Page Table Indexes},
+  author    = {Margaritov, Artemiy and Ustiugov, Dmitrii and Bugnion, Edouard and Grot, Boris},
+  booktitle = {Workshop on ML for Systems at NeurIPS},
+  year      = {2018}
+}
+
+@inproceedings{barr_translation_caching,
+  title     = {Translation Caching: Skip, Don't Walk (the Page Table)},
+  author    = {Barr, Thomas W. and Cox, Alan L. and Rixner, Scott},
+  booktitle = {Proc. International Symposium on Computer Architecture (ISCA)},
+  year      = {2010}
+}
+
+@inproceedings{karakostas_rmm,
+  title     = {Redundant Memory Mappings for Fast Access to Large Memories},
+  author    = {Karakostas, Vasileios and Gandhi, Jayneel and Ayar, Furkan and Cristal, Adri{\'a}n and Hill, Mark D. and McKinley, Kathryn S. and Nemirovsky, Mario and Swift, Michael M. and {\"U}nsal, Osman},
+  booktitle = {Proc. International Symposium on Computer Architecture (ISCA)},
+  year      = {2015}
+}
+
+@inproceedings{park_hybrid,
+  title     = {Hybrid {TLB} Coalescing: Improving {TLB} Translation Coverage under Diverse Fragmented Memory Allocations},
+  author    = {Park, Chang Hyun and Heo, Taekyung and Jeong, Jungi and Huh, Jaehyuk},
+  booktitle = {Proc. International Symposium on Computer Architecture (ISCA)},
+  year      = {2017}
+}
+
+@inproceedings{pichai_gpu_translation,
+  title     = {Architectural Support for Address Translation on {GPUs}: Designing Memory Management Units for {CPU/GPUs} with Unified Address Spaces},
+  author    = {Pichai, Bharath and Hsu, Lisa and Bhattacharjee, Abhishek},
+  booktitle = {Proc. International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS)},
+  year      = {2014}
+}
+
+@inproceedings{bhattacharjee_inter,
+  title     = {Inter-Core Cooperative {TLB} Prefetchers for Chip Multiprocessors},
+  author    = {Bhattacharjee, Abhishek and Martonosi, Margaret},
+  booktitle = {Proc. International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS)},
+  year      = {2010}
+}
+
+@inproceedings{li_sharing_spilling,
+  title     = {Improving Address Translation in Multi-{GPUs} via Sharing and Spilling Aware {TLB} Design},
+  author    = {Li, Bingyao and Yin, Jieming and Zhang, Youtao and Tang, Xulong},
+  booktitle = {Proc. International Symposium on Microarchitecture (MICRO)},
+  year      = {2021}
+}
+
+@inproceedings{shin_irregular,
+  title     = {Scheduling Page Table Walks for Irregular {GPU} Applications},
+  author    = {Shin, Seunghee and Cox, Guilherme and Oskin, Mark and Loh, Gabriel H. and Solihin, Yan and Bhattacharjee, Abhishek and Basu, Arkaprava},
+  booktitle = {Proc. International Symposium on Computer Architecture (ISCA)},
+  year      = {2018}
+}
+
+% ---- Background / foundational references ----
+
+@book{aamodt_book,
+  title     = {General-Purpose Graphics Processor Architectures},
+  author    = {Aamodt, Tor M. and Fung, Wilson Wai Lun and Rogers, Timothy G.},
+  publisher = {Morgan \& Claypool},
+  series    = {Synthesis Lectures on Computer Architecture},
+  year      = {2018}
+}
+
+@misc{nvidia_ampere,
+  title        = {{NVIDIA} Ampere {GA102 GPU} Architecture Whitepaper},
+  author       = {{NVIDIA Corporation}},
+  howpublished = {\url{https://www.nvidia.com/content/PDF/nvidia-ampere-ga-102-gpu-architecture-whitepaper-v2.pdf}},
+  year         = {2021}
+}
+
+@article{hill_smith_3c,
+  title   = {Evaluating Associativity in {CPU} Caches},
+  author  = {Hill, Mark D. and Smith, Alan Jay},
+  journal = {IEEE Transactions on Computers},
+  volume  = {38},
+  number  = {12},
+  pages   = {1612--1630},
+  year    = {1989}
+}
+
+@misc{nyland_coalescing,
+  title        = {Systems and Methods for Coalescing Memory Accesses of Parallel Threads},
+  author       = {Nyland, Lars and Nickolls, John R. and Hirota, Gentaro and Mandal, Tanmoy},
+  howpublished = {US Patent No.\ 8,086,806},
+  year         = {2011}
+}
+
+@article{che_gpgpu_study,
+  title   = {A Performance Study of General-Purpose Applications on Graphics Processors Using {CUDA}},
+  author  = {Che, Shuai and Boyer, Michael and Meng, Jiayuan and Tarjan, David and Sheaffer, Jeremy W. and Skadron, Kevin},
+  journal = {Journal of Parallel and Distributed Computing},
+  volume  = {68},
+  number  = {10},
+  year    = {2008}
+}
+
+@article{garland_cuda,
+  title   = {Parallel Computing Experiences with {CUDA}},
+  author  = {Garland, Michael and Le Grand, Scott and Nickolls, John and Anderson, Joshua and Hardwick, Jim and Morton, Scott and Phillips, Everett and Zhang, Yao and Volkov, Vasily},
+  journal = {IEEE Micro},
+  volume  = {28},
+  number  = {4},
+  year    = {2008}
+}
+
+@misc{intel_sdm,
+  title        = {{Intel\textregistered} 64 and {IA-32} Architectures Software Developer's Manual},
+  author       = {{Intel Corporation}},
+  year         = {2024}
+}
+
+@misc{amd64_manual,
+  title        = {{AMD64} Architecture Programmer's Manual},
+  author       = {{Advanced Micro Devices, Inc.}},
+  year         = {2024}
+}
+
+@misc{rtx3070,
+  title        = {{NVIDIA} {GeForce} {RTX} 3070 Family},
+  author       = {{NVIDIA Corporation}},
+  howpublished = {\url{https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3070-3070ti/}},
+  year         = {2020}
+}
+
+@misc{ampere_microbench,
+  title        = {Demystifying the {Nvidia} {Ampere} Architecture through Microbenchmarking and Instruction-Level Analysis},
+  author       = {Abdelkhalik, Hamdy and Arafa, Yehia and Santhi, Nandakishore and Badawy, Abdel-Hameed},
+  howpublished = {arXiv:2208.11174},
+  year         = {2022}
+}
+
+% ---- Cache replacement / Bloom filter foundations ----
+
+@article{bloom_filter,
+  title   = {Space/Time Trade-offs in Hash Coding with Allowable Errors},
+  author  = {Bloom, Burton H.},
+  journal = {Communications of the ACM},
+  volume  = {13},
+  number  = {7},
+  pages   = {422--426},
+  year    = {1970}
+}
+
+@article{lru,
+  title   = {Evaluation Techniques for Storage Hierarchies},
+  author  = {Mattson, R. L. and Gecsei, J. and Slutz, D. R. and Traiger, I. L.},
+  journal = {IBM Systems Journal},
+  volume  = {9},
+  number  = {2},
+  pages   = {78--117},
+  year    = {1970}
+}
+
+@article{belady,
+  title   = {A Study of Replacement Algorithms for a Virtual-Storage Computer},
+  author  = {Belady, L. A.},
+  journal = {IBM Systems Journal},
+  volume  = {5},
+  number  = {2},
+  pages   = {78--101},
+  year    = {1966}
+}
+
+@inproceedings{rrip,
+  title     = {High Performance Cache Replacement Using Re-Reference Interval Prediction ({RRIP})},
+  author    = {Jaleel, Aamer and Theobald, Kevin B. and Steely, Simon C. and Emer, Joel},
+  booktitle = {Proc. International Symposium on Computer Architecture (ISCA)},
+  year      = {2010}
+}
+
+@inproceedings{hawkeye,
+  title     = {Back to the Future: Leveraging {Belady's} Algorithm for Improved Cache Replacement},
+  author    = {Jain, Akanksha and Lin, Calvin},
+  booktitle = {Proc. International Symposium on Computer Architecture (ISCA)},
+  year      = {2016}
+}
+
+@inproceedings{victim_cache,
+  title     = {Improving Direct-Mapped Cache Performance by the Addition of a Small Fully-Associative Cache and Prefetch Buffers},
+  author    = {Jouppi, Norman P.},
+  booktitle = {Proc. International Symposium on Computer Architecture (ISCA)},
+  year      = {1990}
+}
+
+@inproceedings{power_x86,
+  title     = {Supporting x86-64 Address Translation for 100s of {GPU} Lanes},
+  author    = {Power, Jason and Hill, Mark D. and Wood, David A.},
+  booktitle = {Proc. International Symposium on High-Performance Computer Architecture (HPCA)},
+  year      = {2014}
+}
+
+@inproceedings{ganguly_interplay,
+  title     = {Interplay between Hardware Prefetcher and Page Eviction Policy in {CPU-GPU} Unified Virtual Memory},
+  author    = {Ganguly, Debashis and Zhang, Ziyu and Yang, Jun and Melhem, Rami},
+  booktitle = {Proc. International Symposium on Computer Architecture (ISCA)},
+  year      = {2019}
+}
+
+@inproceedings{snake_prefetch,
+  title     = {Snake: A Variable-length Chain-based Prefetching for {GPUs}},
+  author    = {Mostofi, Saba and Falahati, Hajar and Mahani, Negin and Lotfi-Kamran, Pejman and Sarbazi-Azad, Hamid},
+  booktitle = {Proc. International Symposium on Microarchitecture (MICRO)},
+  year      = {2023}
+}

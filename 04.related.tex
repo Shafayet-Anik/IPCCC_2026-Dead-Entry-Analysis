@@ -1,0 +1,53 @@
+\section{Related Work}
+\label{sec:related}
+
+\noindent\textbf{TLB prefetching and compaction.} LatPC~\cite{latpc} pairs a
+stride predictor~\cite{kandiraju_distance} with entry compaction to prefetch ahead of
+demand misses; Valkyrie~\cite{valkyrie} extends this with multi-level,
+cross-SM prefetching, Avatar~\cite{avatar} across address-space boundaries,
+SnakeByte~\cite{snakebyte} via adaptive recursive page-merging, and
+STAR~\cite{star,li_sharing_spilling} via sub-entry sharing on multi-instance GPUs. On CPUs,
+translation-triggered~\cite{bhattacharjee_ttp,bhattacharjee_large} and
+learned/pipelined~\cite{margaritov_pat,margaritov_learned} prefetching operate similarly.
+All predict future translations from access history; we instead
+characterize misses by eviction history, an orthogonal signal.
+
+\noindent\textbf{Page-walk optimization.} R2D2~\cite{r2d2} exploits
+per-warp address linearity to eliminate redundant walks; Heliostat~\cite{heliostat}
+repurposes ray-tracing hardware for parallel walks; Trans-FW~\cite{trans_fw}
+and Barre Chord~\cite{barre_chord} target multi-GPU/multi-chip-module
+translation; SpecTLB~\cite{pham_spectlb,barr_translation_caching} speculates ahead of confirmed
+translations and Griffin~\cite{baruah_griffin} supports multi-GPU page
+migration. These reduce the \emph{cost} of walks that occur; we identify a
+complementary class where the walk itself is redundant.
+
+\noindent\textbf{Huge pages and page-table layout.} Mosaic~\cite{mosaic}
+provides range-TLB reach without OS support; CoLT~\cite{colt} uses
+contiguous entries at 4\,KB granularity; Elastic Cuckoo Page
+Tables~\cite{elastic_cuckoo} and Translation Ranger~\cite{translation_ranger,karakostas_rmm} restructure
+layout for parallelism and contiguity-awareness; Pham et
+al.~\cite{pham_clustering,park_hybrid} exploit natural translation clustering. These
+address the capacity limit directly; we use 2\,MB pages only as a
+diagnostic to separate capacity-driven from interference-driven misses.
+
+\noindent\textbf{TLB-aware scheduling and dead-block prediction.} CTA
+scheduling~\cite{cta_schedule} and MASK~\cite{avoiding_tlb,pichai_gpu_translation} improve locality and
+multi-application concurrency; OASIS~\cite{oasis} places memory
+object-aware across GPUs; batch-aware management~\cite{kim_batch,shin_irregular} amortizes
+translation overhead for irregular workloads -- these reduce miss
+\emph{frequency} through scheduling, whereas our structural cause persists
+regardless. Dead-block prediction has a long cache lineage~\cite{rrip,hawkeye,victim_cache};
+Khan et al.~\cite{sdbp_micro10} introduced sampling-based prediction for
+LLCs, and closest to our work, Mazumdar et al.~\cite{dop_hpca21} jointly
+predict dead pages and blocks via PC-based reuse. We instead use eviction
+history, requiring no PC tracking, and quantify prevalence across 24
+GPU workloads -- a structurally distinct miss class not previously
+isolated at the GPU L2 TLB.
+
+\noindent\textbf{MSHR and CPU TLB characterization.} MSHR occupancy is
+known to carry workload-classification signal for cache/memory
+tuning~\cite{mshr_mgmt,mlp}; we apply an analogous signal to the TLB MSHR. CPU TLB
+studies~\cite{translation_cpu,shared_tlb,bhattacharjee_inter} attribute misses mainly to
+working-set overflow; GPUs differ in that thousands of concurrent warps
+interact through one shared L2 TLB and MSHR, producing amplification
+effects absent on CPUs.

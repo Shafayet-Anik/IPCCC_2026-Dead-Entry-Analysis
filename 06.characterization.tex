@@ -1,0 +1,204 @@
+\section{Dead-Entry Miss Characterization}
+\label{sec:characterization}
+
+\subsection{Dead-Entry Ratio}
+\label{sec:char_de_ratio}
+
+Figure~\ref{fig:de_bars} shows the dead-entry ratio, defined as the fraction of L2 TLB
+misses classified as dead-entry re-walks, for all 24 workloads sorted in descending order.
+The distribution is striking: dead-entry misses are not a rare edge case but the dominant
+miss type across the benchmark suite.
+16 of the 24 workloads exhibit dead-entry ratios above 90\%, and all 9 TLB-sensitive workloads exceed 98\% (six of them above 99\%).
+This near-unity ratio arises from the interplay between working-set size and access
+recurrence.
+Once a TLB-sensitive workload reaches steady-state execution, its working set is large
+enough to guarantee eviction between successive accesses to the same page, yet small
+enough that the same pages are accessed repeatedly within a single kernel invocation.
+As a result, virtually every L2 TLB miss encountered in steady state is a re-walk of a
+page that the TLB has already translated and discarded.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\figwidth]{figs/fig03_de_ratio_bars.pdf}
+  \caption{L2 TLB dead-entry ratio for all 24 workloads, sorted descending.}
+  \label{fig:de_bars}
+\end{figure}
+
+\noindent Importantly, high DE ratio alone does not imply TLB sensitivity.
+Workloads like \texttt{lud} and \texttt{gramschmidt} exceed 99\% DE ratio yet sustain
+high throughput because their absolute miss rate is low enough that cumulative stall
+time remains negligible, motivating a joint condition of high DE ratio and
+high MPKI.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\figwidth]{figs/fig04_de_ratio_vs_mpki.pdf}
+  \caption{L2 TLB Dead-entry ratio vs.\ L2 TLB MPKI for all 24 workloads.}
+  \label{fig:de_mpki}
+\end{figure}
+
+Figure~\ref{fig:de_mpki} plots all 24 workloads by DE ratio against L2 TLB MPKI.
+The most immediately apparent feature is the vertical gap separating TLB-sensitive
+workloads from the rest: 9 sensitive workloads occupy a clearly elevated MPKI
+band, while the remaining 15 cluster near the bottom of the MPKI axis regardless
+of their DE ratio.
+Within the high-MPKI band, all workloads cluster near
+100\% dead-entry ratio,
+confirming that near-unity DE ratio is a reliable
+characteristic of workloads that are both TLB-sensitive and operating in steady state.
+In contrast, the lower portion of the plot shows a wide spread of DE ratios among
+workloads with low MPKI, ranging from near zero to above 99\%, confirming that DE ratio
+alone carries no predictive power for performance sensitivity.
+
+\subsection{Temporal Structure}
+\label{sec:char_temporal}
+
+To understand how dead-entry misses evolve over the course of kernel execution,
+Figure~\ref{fig:miss_ts} shows the miss arrival timeseries for \texttt{atax} and
+\texttt{bicg}, two workloads that share nearly identical DE ratios ($\sim$99.9\%
+and $\sim$99.2\%) and comparable MPKI (81 and 56, respectively) yet respond very
+differently to eviction-history protection.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\figwidth]{figs/fig05_miss_arrival_timeseries.pdf}
+  \caption{Miss arrival timeseries and dead-entry fraction for \texttt{atax} and \texttt{bicg} in steady state.}
+  \label{fig:miss_ts}
+\end{figure}
+
+\noindent In both workloads, the dead-entry fraction rises sharply from cold-start and stabilizes
+near 99\% within the first few thousand kernel cycles.
+This rapid convergence shows that the dead-entry phenomenon is a steady-state property
+of the workload's memory access pattern rather than a transient warm-up artifact.
+After the initial cold-miss period, the TLB is fully populated with the working set
+and subsequent misses are almost entirely re-walks of evicted entries.
+The miss arrival rate, shown as the total number of misses per time window, is
+comparable between the two workloads throughout steady state.
+Both issue misses at similar frequencies and both carry the eviction-history signature
+on nearly all of them.
+The timeseries data alone would lead to the conclusion that the two workloads are
+structurally interchangeable, yet their performance responses to the same eviction-history
+intervention differ by nearly two orders of magnitude.
+Understanding this divergence requires examining beyond miss
+rate to how warps share and reuse virtual pages.
+
+\subsection{Access Structure: The Class Discriminator}
+\label{sec:char_burstness}
+
+The discriminator between \texttt{atax} and \texttt{bicg} is not miss frequency but access structure, specifically whether warps tend to reference the same virtual page or distinct virtual pages at a given moment. Figure~\ref{fig:burstness} shows the MSHR dead-slot occupancy timeseries for both workloads. \texttt{atax} exhibits brief, high-amplitude bursts separated by near-zero occupancy, while \texttt{bicg} shows a flat, sustained occupancy level throughout execution. This difference directly reflects how each workload maps onto the warp execution model.
+
+\begin{comment}
+The discriminator between \texttt{atax} and \texttt{bicg} is not miss frequency but
+rather access structure, specifically whether the warps within a kernel tend to
+reference the same virtual page or distinct virtual pages at any given moment.
+Figure~\ref{fig:burstness} plots the MSHR dead-slot occupancy timeseries for both
+workloads, and the contrast is immediately visible: \texttt{atax} exhibits a sharply
+spiky signal with brief, high-amplitude bursts separated by periods of near-zero
+occupancy, while \texttt{bicg} shows a flat, sustained occupancy level throughout
+execution.
+This structural difference is not incidental but is a direct consequence of how each
+workload's computation maps onto the warp execution model.
+\end{comment}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\figwidth]{figs/fig06_mshr_burstness.pdf}
+  \caption{MSHR dead-slot occupancy over time for \texttt{atax} and \texttt{bicg}.}
+  \label{fig:burstness}
+\end{figure}
+
+In \texttt{atax}, each warp computes $y \mathrel{+}= A[i][j] \cdot x[j]$.
+All 32 threads within the warp access the same element of the $x[]$ vector, the
+same $j$ index, producing a single shared VPN for that warp instruction.
+When this VPN is evicted and re-walked, all warps stalled on the same $x[j]$ reference are merged into a single MSHR entry through same-VPN coalescing. A single page walk therefore serves many waiting warps simultaneously, producing the sharp occupancy spikes in Figure~\ref{fig:burstness}. The spike height reflects the number of merged and simultaneously released warps. \texttt{mvt} exhibits the same access pattern for analogous algebraic reasons, making it the second member of this class.
+
+\begin{comment}
+When this VPN is evicted from the TLB and subsequently re-walked, every warp that
+is concurrently stalled on the same $x[j]$ reference is merged into a single MSHR
+entry through the same-VPN coalescing mechanism described in
+Section~\ref{sec:background}.
+The page walk therefore serves a burst of coalesced warp requests simultaneously,
+unblocking all of them in one fill operation.
+In the MSHR occupancy trace, this appears as a sharp spike: occupancy rises steeply
+when the shared VPN is evicted and the page walk begins, then drains abruptly when
+the translation is reinstalled and all waiting warps are released.
+The spikes in Figure~\ref{fig:burstness} correspond directly to these burst events,
+and the depth of each spike reflects the number of warps that were merged and
+simultaneously unblocked.
+\texttt{mvt} exhibits the same access pattern for analogous algebraic reasons, making
+it the second member of this class.
+
+In \texttt{bicg}, each warp computes a column dot product where thread $i$ accesses
+row $i$ of matrix $A$.
+This produces 32 distinct VPNs per warp instruction, one per thread, with no shared
+pages across threads or warps.
+The MSHR merge depth is therefore approximately one: each miss is independent and
+must be resolved by its own page walk.
+Its 2048-by-2048 working set requires approximately 4096 pages, four times the
+L2 TLB capacity of 1024 entries.
+Evictions are driven by this working-set overflow rather than by interference from
+other pages, and protecting any individual re-installed entry does not reduce the
+overall eviction pressure because new capacity evictions continuously replenish the
+pool of dead-entry misses at the same rate.
+In the MSHR occupancy trace, this manifests as the flat, sustained signal visible
+in Figure~\ref{fig:burstness}: occupancy remains roughly constant throughout execution
+because the miss stream is a steady flow of independent capacity evictions rather
+than a series of burst events.
+The remaining 6 Class~B workloads exhibit the same structural property through
+different computations: \texttt{nw}'s dynamic-programming recurrence, \texttt{sssp}'s
+adjacency-list traversal, \texttt{kmeans}'s point-to-centroid assignments, \texttt{gesummv}'s matrix-vector streaming accesses, and
+\texttt{dmr} and \texttt{mst}'s graph topology iterations all generate unique VPN
+streams per warp with working sets that exceed L2 TLB reach.
+\end{comment}
+
+In \texttt{bicg}, each warp computes a column dot product where thread $i$ accesses row $i$ of matrix $A$, generating 32 distinct VPNs per warp instruction with little cross-warp sharing. The MSHR merge depth is therefore approximately one, so each miss requires an independent page walk. Its 2048-by-2048 working set requires approximately 4096 pages, four times the 1024-entry L2 TLB capacity, making evictions fundamentally capacity-driven. Consequently, the MSHR occupancy trace in Figure~\ref{fig:burstness} remains flat and sustained throughout execution because misses form a steady stream of independent capacity evictions rather than burst events. The remaining 6 Class B workloads (\texttt{nw}, \texttt{sssp}, \texttt{kmeans}, \texttt{gesummv}, \texttt{dmr}, and \texttt{mst}) exhibit the same structural property, generating unique VPN streams with working sets that exceed L2 TLB reach.
+
+The two classes can therefore be distinguished by the shape of the MSHR dead-slot
+occupancy signal.
+Bursty, high-amplitude spikes indicate that warps share virtual pages and that
+individual eviction events serve many waiting requestors at once.
+Flat, sustained occupancy indicates that each warp accesses distinct pages and that
+evictions are driven by working-set capacity that cannot be resolved at the
+replacement level.
+This temporal signature is observable from existing MSHR occupancy counters without
+any offline profiling or application modification, making it a practical runtime
+discriminator.
+
+
+\subsection{Validating Capacity-Driven Misses}
+\label{sec:char_2mb}
+
+The classification of seven workloads as capacity-driven rests on the claim that their
+dead-entry misses originate from working-set overflow rather than from interference at
+the TLB replacement level.
+A direct way to test this claim is to expand TLB reach and observe whether the misses
+disappear.
+Figure~\ref{fig:de_2mb} shows IPC speedup under 2\,MB huge pages relative to the
+4\,KB baseline for all nine TLB-sensitive workloads.
+With 2\,MB pages, the L2 TLB reach expands from 4\,MB to 256\,MB, covering a far
+larger fraction of each workload's active footprint with the same 1024 entries.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\figwidth]{figs/fig07_2mb_ipc_speedup.pdf}
+  \caption{IPC speedup under 2\,MB pages over 4\,KB baseline for all 9 TLB-sensitive workloads.}
+  \label{fig:de_2mb}
+\end{figure}
+
+The results validate the capacity-driven diagnosis across all 7 Class~B workloads
+through a wide range of speedups that reflect each workload's working-set size relative
+to the expanded reach.
+\texttt{gesummv} shows the most dramatic response at $128\times$: its 16\,MB working
+set fits entirely within the 256\,MB reach, eliminating capacity evictions almost
+completely.
+\texttt{kmeans} ($25\times$), \texttt{sssp} ($14.5\times$), \texttt{bicg} ($37\times$),
+\texttt{nw} ($5.7\times$), and \texttt{mst} ($6.3\times$) each improve by an amount
+that tracks how tightly their active footprint is bounded by the reach ceiling.
+\texttt{dmr} shows the smallest response at $2.2\times$, reflecting a more irregular
+address stream only partially contained within the larger reach.
+In every case the improvement confirms that capacity overflow is the root cause.
+The two Class~A workloads, \texttt{atax} and \texttt{mvt}, also benefit substantially
+from 2\,MB pages, achieving $63\times$ and $39\times$ speedups, respectively.
+However, unlike the Class~B workloads, their performance is not fundamentally
+constrained by working-set capacity: expanding reach does not eliminate the interference
+that causes evictions when many warps compete for the same entries.

@@ -1,0 +1,11 @@
+kernel,config,cycles,de_misses
+K1,Baseline,2000,0
+K2,Baseline,2000,0
+K3,Baseline,2000,0
+K4,Baseline,2000,0
+K5,Baseline,15402,512
+K1,O3,2000,0
+K2,O3,2000,0
+K3,O3,2000,0
+K4,O3,2000,0
+K5,O3,5269,0

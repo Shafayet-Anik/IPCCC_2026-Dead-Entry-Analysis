@@ -1,0 +1,149 @@
+\section{Methodology}
+\label{sec:methodology}
+
+\subsection{Simulation Platform}
+
+All experiments run on Accel-Sim~\cite{accelsim}, a cycle-accurate GPU simulator
+built on GPGPU-Sim~\cite{gpgpusim}.
+We adopt Accel-Sim's default \texttt{SM86\_RTX3070} configuration~\cite{accelsim},
+which models an NVIDIA GeForce RTX~3070-class GPU~\cite{rtx3070} based on the Ampere
+microarchitecture~\cite{nvidia_ampere,ampere_microbench}; the baseline GPU, cache, and
+memory parameters are used unmodified.
+The TLB hierarchy parameters---L1 and L2 TLB capacities, MSHR depths, lookup latencies,
+and the 16 page-table walkers---follow the configuration used in the state-of-the-art work~\cite{latpc},
+ensuring our results are directly comparable to that prior work.
+Table~\ref{tab:tlb_config} summarizes the configuration.
+The L2 TLB has 1024 entries with LRU replacement, providing 4\,MB of reach with 4\,KB pages.
+Page-table walks are modeled with 16 dedicated PTWs, each capable of one concurrent walk.
+The L2 MSHR supports 128 in-flight translation requests; same-VPN requests are merged
+into a single MSHR entry.
+
+
+\begin{table}[ht]
+  \centering
+  \caption{Simulated System Configuration.}
+  \label{tab:tlb_config}
+  \scriptsize
+  \setlength{\tabcolsep}{4pt}
+  \renewcommand{\arraystretch}{1.2}
+  \begin{tabular}{|>{\centering\arraybackslash}m{0.14\columnwidth}|m{0.74\columnwidth}|}
+    \hline
+    \multicolumn{2}{|c|}{\textbf{GPU Configuration}} \\
+    \hline
+    SM & 46 SMs, 1536 threads / 32-thread warps, 32 CTAs per SM\newline
+         65{,}536 registers per SM, up to 100\,KB shared memory\newline
+         1132\,MHz core clock \\
+    \hline
+    Cache & 128\,B line; L1 D-cache 128\,KB, 32-way, 384 MSHRs\newline
+            L2 cache (unified) 4\,MB, 16-way \\
+    \hline
+    DRAM & GDDR6, 16 channels, 14\,Gbps, 3500.5\,MHz\newline
+           254-cycle access latency \\
+    \hline
+    % Interconnect & iSLIP arbiter, 2 subnets, 40\,B flit \\
+    \hline
+    \multicolumn{2}{|c|}{\textbf{Virtual Memory Configuration}} \\
+    \hline
+    L1 TLB & 32 entries, fully associative, 4\,KB pages\newline
+             16 MSHRs (4-way merge), 4 ports\newline
+             20-cycle lookup latency, LRU replacement \\
+    \hline
+    L2 TLB & 1024 entries, 16-way, 4\,KB pages\newline
+             128 MSHRs (8-way merge), 16 ports\newline
+             80-cycle lookup latency, LRU replacement\newline
+             Reach 4\,MB (4\,KB) / 256\,MB (2\,MB pages) \\
+    \hline
+    Page Walk & 16 page-table walkers\newline
+                x86-64 4-level page table~\cite{amd64_manual,intel_sdm},
+                254 cycles per level\newline
+                32-entry page-walk cache, 20-cycle lookup \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\subsection{Instrumentation}
+
+We extend Accel-Sim with four measurement and mechanism modules:
+
+\noindent\textbf{Miss arrival timeseries:} Records arrival timestamps of every
+L2 TLB miss, enabling analysis of temporal miss structure.
+
+\noindent\textbf{Dead-entry detection:} Tracks the last eviction cycle per VPN
+in a hash table. A miss is classified as dead-entry if the VPN appears in this
+table, indicating a prior eviction since last installation.
+
+\noindent\textbf{MSHR dead-slot timeseries:} Samples the number of MSHR entries
+currently waiting on dead-entry re-walks, at 100-cycle intervals.
+Peak occupancy defines the \emph{burstiness} metric.
+
+\noindent\textbf{DEPOT protection statistics:} Records Bloom filter insert and hit
+counts, protected-entry counts, and LRU fallback events. More implementation details are in Section~\ref{sec:depot}.
+
+\subsection{Workload Suite}
+Table~\ref{tab:workloads} characterizes all 24 workloads
+(Classes: \textbf{A}\,=\,interference-driven; \textbf{B}\,=\,capacity-driven; \textbf{---}\,=\,not TLB-sensitive). Here, MPKI is L2 TLB misses per kilo-instruction, while mem-MPKI is misses per
+kilo memory-instruction, isolating translation pressure from non-memory compute.
+We select applications with working sets exceeding 4\,MB or L2 TLB MPKI above 1.0,
+matching the criteria used in LatPC~\cite{latpc}.
+Workloads span Rodinia~\cite{rodinia}, PolyBench~\cite{polybench}, Lonestar~\cite{lonestar},
+Parboil~\cite{parboil}, and Pannotia~\cite{pannotia} benchmark suites.
+We apply a two-bin framing: \textbf{TLB-sensitive} workloads (L2 MPKI $\geq 1$, matching the
+selection criterion of LatPC~\cite{latpc}) vs.\ \textbf{not TLB-sensitive} workloads
+(L2 MPKI $< 1$).
+Nine workloads meet the TLB-sensitive threshold (including \texttt{mst} at MPKI$\,{=}\,0.98$,
+a near-threshold borderline case with confirmed capacity-driven root cause);
+the remaining 15 serve as a graceful-degradation validation set.
+Within the TLB-sensitive bin, we sub-classify by access structure:
+\textbf{Class~A} (interference-driven) for workloads where all threads in a warp
+reference the same virtual page (shared VPN)---producing MSHR-merge amplification---and
+\textbf{Class~B} (capacity-driven) for workloads where each warp instruction generates
+distinct VPNs per thread, driving working-set-overflow evictions that exceed TLB reach.
+Class~B membership is confirmed by the 2\,MB IPC experiment: if switching to 2\,MB pages
+(L2 reach $= 256$\,MB) yields a large IPC speedup, the workload was reach-limited.
+
+
+\begin{table}[t]
+  \centering
+  \caption{List of Evaluated Workloads.}
+  \label{tab:workloads}
+  \scriptsize
+  \setlength{\tabcolsep}{4pt}
+  \renewcommand{\arraystretch}{1.05}
+  \begin{tabular}{@{}llrrrc@{}}
+    \toprule
+    \textbf{Workload} & \textbf{Suite} & \textbf{MPKI} & \textbf{mem-MPKI} & \textbf{Footprint} & \textbf{Cls} \\
+    \midrule
+    atax            & PolyBench & 81.4   & 119.6  & 16.0\,MB   & A \\
+    mvt               & PolyBench & 56.5   & 83.0   & 16.0\,MB   & A \\
+    \midrule
+    bicg            & PolyBench & 56.4   & 82.8   & 16.0\,MB   & B \\
+    gesummv           & PolyBench & 175.5  & 249.7  & 31.3\,MB   & B \\
+    nw                  & Rodinia   & 5.02   & 67.9   & 32.0\,MB   & B \\
+    dmr                  & Lonestar  & 2.99   & 18.6   & 24.2\,MB   & B \\
+    kmeans              & Rodinia   & 2.09   & 72.5   & 30.3\,MB   & B \\
+    sssp           & Lonestar  & 1.58   & 11.3   & 48.0\,MB   & B \\
+    mst                & Lonestar  & 0.98   & 6.80   & 73.0\,MB   & B \\
+    \midrule
+    backprop          & Rodinia   & 0.02   & 0.30   & 9.0\,MB    & --- \\
+    bfs                & Rodinia   & 0.03   & 0.20   & 2.4\,MB    & --- \\
+    gaussian            & Rodinia   & 0.00   & 0.01   & 0.5\,MB    & --- \\
+    hybridsort          & Rodinia   & 0.02   & 0.46   & 12.0\,MB   & --- \\
+    lud                 & Rodinia   & 0.03   & 0.58   & 16.0\,MB   & --- \\
+    pagerank                  & Pannotia  & 0.06   & 0.40   & 10.9\,MB   & --- \\
+    p-bfs                & Parboil   & 0.00   & 0.07   & 1.1\,MB    & --- \\
+    mri-gridding         & Parboil   & 0.09   & 6.04   & 226.4\,MB  & --- \\
+    sad                       & Parboil   & 0.02   & 1.48   & 8.5\,MB    & --- \\
+    sgemm               & Parboil   & 0.00   & 0.07   & 12.0\,MB   & --- \\
+    spmv                      & Parboil   & 0.19   & 0.71   & 29.4\,MB   & --- \\
+    2mm            & PolyBench & 0.00   & 0.00   & 5.0\,MB    & --- \\
+    fdtd2d          & PolyBench & 0.09   & 0.49   & 48.0\,MB   & --- \\
+    gramschmidt               & PolyBench & 0.40   & 0.62   & 24.4\,MB   & --- \\
+    streamcluster        & Rodinia   & 0.17   & 0.70   & 8.4\,MB    & --- \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+
+\subsection{Evaluated Configurations}
+
+We evaluate six configurations: (i) Baseline: Unmodified LRU replacement, 4\,KB pages, (ii) DEPOT: DEPOT eviction protection enabled with default parameters ($W = 500\text{K}$ cycles, 8192-bit Bloom filter), (iii) 2\,MB baseline: Baseline with 2\,MB huge pages (L2 TLB reconfigured to 128 entries $\times$ 2\,MB, reach = 256\,MB), (iv) 2\,MB+DEPOT: DEPOT with 2\,MB pages, (v) LatPC: State-of-the-art TLB prefetching and compaction~\cite{latpc} enabled, 4\,KB pages, and (vi) LatPC+DEPOT: Both LatPC and DEPOT enabled simultaneously.

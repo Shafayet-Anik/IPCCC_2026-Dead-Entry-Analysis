@@ -1,0 +1,17 @@
+\begin{abstract}
+GPU workloads with large memory footprints frequently suffer from redundant L2 TLB misses
+in which a recently evicted translation is immediately re-walked at full page-walk cost.
+We characterize these \emph{dead-entry misses} across 24 GPU workloads, finding they
+account for up to 99\% of L2 TLB misses in the most TLB-sensitive applications, yet their
+performance impact varies widely depending on memory access structure.
+Workloads where warps share the same virtual page suffer from burst amplification, where
+a single eviction stalls many warps simultaneously waiting for one translation to return.
+In contrast, workloads where each warp accesses a distinct set of pages face a
+capacity-overflow problem that no replacement policy can resolve, a distinction validated
+by huge page experiments.
+Building on this two-class taxonomy, we design \emph{DEPOT} (Dead-Entry PrOTection),
+a 1\,KB Bloom filter mechanism that prevents recently evicted translations from being
+displaced immediately upon reinstallation, delivering up to 72\% IPC improvement on
+interference-driven workloads with zero overhead on others, and composing with the state-of-the-art TLB prefetching and compaction mechanism,
+for 2 to 7\% additional gain.
+\end{abstract}

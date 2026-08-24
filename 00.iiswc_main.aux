@@ -1,0 +1,196 @@
+\relax 
+\citation{power_x86}
+\citation{ganguly_interplay,shin_irregular}
+\citation{latpc,valkyrie,mosaic,snake_prefetch}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{}\protected@file@percent }
+\newlabel{sec:introduction}{{1}{1}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Performance improvement (IPC) from eliminating dead-entry re-walks against three candidate predictors: (a)~DE ratio, (b)~MPKI, and (c)~MSHR burstiness, for all 24 workloads.}}{1}{}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:teaser}{{1}{1}{}{}{}}
+\citation{latpc}
+\citation{latpc}
+\citation{aamodt_book,che_gpgpu_study,garland_cuda}
+\citation{nyland_coalescing}
+\citation{pichai_gpu_translation,translation_cpu}
+\citation{nvidia_ampere}
+\citation{shin_irregular}
+\citation{pichai_gpu_translation,avoiding_tlb,latpc}
+\citation{lru,belady}
+\citation{hill_smith_3c}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Background}{2}{}\protected@file@percent }
+\newlabel{sec:background}{{2}{2}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}GPU Address Translation}{2}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces GPU address translation hierarchy (SM86): L1 TLB per SM, shared L2 TLB, 16 PTWs, and MSHR merging for same-VPN requests.}}{2}{}\protected@file@percent }
+\newlabel{fig:arch}{{2}{2}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Dead-Entry TLB Misses}{2}{}\protected@file@percent }
+\citation{latpc}
+\citation{kandiraju_distance}
+\citation{valkyrie}
+\citation{avatar}
+\citation{snakebyte}
+\citation{star,li_sharing_spilling}
+\citation{bhattacharjee_ttp,bhattacharjee_large}
+\citation{margaritov_pat,margaritov_learned}
+\citation{r2d2}
+\citation{heliostat}
+\citation{trans_fw}
+\citation{barre_chord}
+\citation{pham_spectlb,barr_translation_caching}
+\citation{baruah_griffin}
+\citation{mosaic}
+\citation{colt}
+\citation{elastic_cuckoo}
+\citation{translation_ranger,karakostas_rmm}
+\citation{pham_clustering,park_hybrid}
+\citation{cta_schedule}
+\citation{avoiding_tlb,pichai_gpu_translation}
+\citation{oasis}
+\citation{kim_batch,shin_irregular}
+\citation{rrip,hawkeye,victim_cache}
+\citation{sdbp_micro10}
+\citation{dop_hpca21}
+\citation{mshr_mgmt,mlp}
+\citation{translation_cpu,shared_tlb,bhattacharjee_inter}
+\citation{accelsim}
+\citation{gpgpusim}
+\citation{accelsim}
+\citation{rtx3070}
+\citation{nvidia_ampere,ampere_microbench}
+\citation{latpc}
+\citation{amd64_manual,intel_sdm}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Related Work}{3}{}\protected@file@percent }
+\newlabel{sec:related}{{3}{3}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Methodology}{3}{}\protected@file@percent }
+\newlabel{sec:methodology}{{4}{3}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Simulation Platform}{3}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Simulated System Configuration.}}{3}{}\protected@file@percent }
+\newlabel{tab:tlb_config}{{1}{3}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Instrumentation}{3}{}\protected@file@percent }
+\citation{latpc}
+\citation{rodinia}
+\citation{polybench}
+\citation{lonestar}
+\citation{parboil}
+\citation{pannotia}
+\citation{latpc}
+\citation{latpc}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces List of Evaluated Workloads.}}{4}{}\protected@file@percent }
+\newlabel{tab:workloads}{{2}{4}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Workload Suite}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Evaluated Configurations}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Dead-Entry Miss Characterization}{4}{}\protected@file@percent }
+\newlabel{sec:characterization}{{5}{4}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Dead-Entry Ratio}{4}{}\protected@file@percent }
+\newlabel{sec:char_de_ratio}{{5.1}{4}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces L2 TLB dead-entry ratio for all 24 workloads, sorted descending.}}{4}{}\protected@file@percent }
+\newlabel{fig:de_bars}{{3}{4}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces L2 TLB Dead-entry ratio vs.\ L2 TLB MPKI for all 24 workloads.}}{5}{}\protected@file@percent }
+\newlabel{fig:de_mpki}{{4}{5}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Temporal Structure}{5}{}\protected@file@percent }
+\newlabel{sec:char_temporal}{{5.2}{5}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Miss arrival timeseries and dead-entry fraction for \texttt  {atax} and \texttt  {bicg} in steady state.}}{5}{}\protected@file@percent }
+\newlabel{fig:miss_ts}{{5}{5}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Access Structure: The Class Discriminator}{5}{}\protected@file@percent }
+\newlabel{sec:char_burstness}{{5.3}{5}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces MSHR dead-slot occupancy over time for \texttt  {atax} and \texttt  {bicg}.}}{5}{}\protected@file@percent }
+\newlabel{fig:burstness}{{6}{5}{}{}{}}
+\citation{bloom_filter}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Validating Capacity-Driven Misses}{6}{}\protected@file@percent }
+\newlabel{sec:char_2mb}{{5.4}{6}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces IPC speedup under 2\,MB pages over 4\,KB baseline for all 9 TLB-sensitive workloads.}}{6}{}\protected@file@percent }
+\newlabel{fig:de_2mb}{{7}{6}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}DEPOT: Dead-Entry PrOTection}{6}{}\protected@file@percent }
+\newlabel{sec:depot}{{6}{6}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces DEPOT mechanism: eviction-history Bloom filter, Pending Dead-Entry Set, per-entry protection timer, and protection-aware replacement cascade.}}{6}{}\protected@file@percent }
+\newlabel{fig:depot_mech}{{8}{6}{}{}{}}
+\citation{evicted_addr_filter}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Performance Evaluation and Analysis}{7}{}\protected@file@percent }
+\newlabel{sec:evaluation}{{7}{7}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}DEPOT Performance}{7}{}\protected@file@percent }
+\newlabel{sec:o3_real}{{7.1}{7}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces IPC improvement of DEPOT over 4\,KB baseline for all 24 workloads, sorted descending.}}{7}{}\protected@file@percent }
+\newlabel{fig:o3_gains_bar}{{9}{7}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces IPC improvement of DEPOT vs.\ L2 TLB MPKI for all 24 workloads.}}{7}{}\protected@file@percent }
+\newlabel{fig:o3_scatter}{{10}{7}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces DEPOT parameter sensitivity for 9 TLB-sensitive workloads: protection window $W$ (left) and Bloom filter size (right).}}{8}{}\protected@file@percent }
+\newlabel{fig:params}{{11}{8}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Class~A/B Asymmetry}{8}{}\protected@file@percent }
+\newlabel{sec:disc_classes}{{7.2}{8}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Composition with LatPC}{8}{}\protected@file@percent }
+\newlabel{sec:o3_latpc}{{7.3}{8}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces IPC comparison across four configurations for all 24 workloads.}}{8}{}\protected@file@percent }
+\newlabel{fig:ipc}{{12}{8}{}{}{}}
+\citation{latpc}
+\bibstyle{IEEEtranS}
+\bibdata{reference}
+\bibcite{aamodt_book}{1}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Discussion and Limitations}{9}{}\protected@file@percent }
+\newlabel{sec:discussion}{{8}{9}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9}Conclusion}{9}{}\protected@file@percent }
+\newlabel{sec:conclusion}{{9}{9}{}{}{}}
+\bibcite{ampere_microbench}{2}
+\bibcite{amd64_manual}{3}
+\bibcite{mosaic}{4}
+\bibcite{avoiding_tlb}{5}
+\bibcite{gpgpusim}{6}
+\bibcite{barr_translation_caching}{7}
+\bibcite{pham_spectlb}{8}
+\bibcite{baruah_griffin}{9}
+\bibcite{valkyrie}{10}
+\bibcite{belady}{11}
+\bibcite{bhattacharjee_large}{12}
+\bibcite{bhattacharjee_ttp}{13}
+\bibcite{shared_tlb}{14}
+\bibcite{bhattacharjee_inter}{15}
+\bibcite{bloom_filter}{16}
+\bibcite{lonestar}{17}
+\bibcite{pannotia}{18}
+\bibcite{rodinia}{19}
+\bibcite{che_gpgpu_study}{20}
+\bibcite{heliostat}{21}
+\bibcite{barre_chord}{22}
+\bibcite{ganguly_interplay}{23}
+\bibcite{garland_cuda}{24}
+\bibcite{polybench}{25}
+\bibcite{mshr_mgmt}{26}
+\bibcite{r2d2}{27}
+\bibcite{latpc}{28}
+\bibcite{hill_smith_3c}{29}
+\bibcite{intel_sdm}{30}
+\bibcite{hawkeye}{31}
+\bibcite{rrip}{32}
+\bibcite{victim_cache}{33}
+\bibcite{kandiraju_distance}{34}
+\bibcite{karakostas_rmm}{35}
+\bibcite{accelsim}{36}
+\bibcite{sdbp_micro10}{37}
+\bibcite{kim_batch}{38}
+\bibcite{cta_schedule}{39}
+\@writefile{toc}{\contentsline {section}{References}{10}{}\protected@file@percent }
+\bibcite{snakebyte}{40}
+\bibcite{star}{41}
+\bibcite{trans_fw}{42}
+\bibcite{li_sharing_spilling}{43}
+\bibcite{margaritov_learned}{44}
+\bibcite{margaritov_pat}{45}
+\bibcite{lru}{46}
+\bibcite{dop_hpca21}{47}
+\bibcite{snake_prefetch}{48}
+\bibcite{rtx3070}{49}
+\bibcite{nvidia_ampere}{50}
+\bibcite{nyland_coalescing}{51}
+\bibcite{park_hybrid}{52}
+\bibcite{avatar}{53}
+\bibcite{pham_clustering}{54}
+\bibcite{colt}{55}
+\bibcite{pichai_gpu_translation}{56}
+\bibcite{power_x86}{57}
+\bibcite{translation_cpu}{58}
+\bibcite{mlp}{59}
+\bibcite{evicted_addr_filter}{60}
+\bibcite{shin_irregular}{61}
+\bibcite{elastic_cuckoo}{62}
+\bibcite{parboil}{63}
+\bibcite{oasis}{64}
+\bibcite{translation_ranger}{65}
+\gdef \@abspage@last{11}

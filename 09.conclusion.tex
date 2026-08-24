@@ -1,0 +1,23 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+Dead-entry TLB misses are a structurally distinct, avoidable miss class that accounts
+for over 99\% of L2 TLB misses in the most TLB-sensitive GPU workloads.
+We characterize dead-entry misses across 24 GPU workloads, using MPKI $\geq 1$ as a
+TLB-sensitivity threshold to identify 9 TLB-sensitive workloads and sub-classify them
+by access structure into Class~A and Class~B,
+with Class~B membership validated by 2\,MB IPC experiments confirming reach-limited
+root causes.
+DEPOT, a 1\,KB Bloom-filter eviction protection mechanism, eliminates Class~A
+dead-entry re-walks with up to 72\% IPC improvement, degrades gracefully to zero
+overhead on Class~B, and composes additively with LatPC~\cite{latpc} on
+interference-driven workloads to deliver 2 to 7\% further improvement at negligible
+marginal hardware cost, pushing \texttt{atax} from 4.70 to 4.95\,IPC for a combined
+$14\times$ improvement over the 4\,KB baseline.
+Several directions remain for future work.
+The temporal MSHR occupancy signatures identified in this paper suggest the potential
+for runtime-adaptive TLB policies that dynamically distinguish interference-driven from
+capacity-driven miss behavior.
+In addition, integrating eviction-history signals with TLB-aware warp scheduling or
+page-placement mechanisms may further reduce destructive translation interference
+before evictions occur.
