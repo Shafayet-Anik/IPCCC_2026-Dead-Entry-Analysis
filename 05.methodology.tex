@@ -63,21 +63,14 @@ into a single MSHR entry.
 
 \subsection{Instrumentation}
 
-We extend Accel-Sim with four measurement and mechanism modules:
-
-\noindent\textbf{Miss arrival timeseries:} Records arrival timestamps of every
-L2 TLB miss, enabling analysis of temporal miss structure.
-
-\noindent\textbf{Dead-entry detection:} Tracks the last eviction cycle per VPN
-in a hash table. A miss is classified as dead-entry if the VPN appears in this
-table, indicating a prior eviction since last installation.
-
-\noindent\textbf{MSHR dead-slot timeseries:} Samples the number of MSHR entries
-currently waiting on dead-entry re-walks, at 100-cycle intervals.
-Peak occupancy defines the \emph{burstiness} metric.
-
-\noindent\textbf{DEPOT protection statistics:} Records Bloom filter insert and hit
-counts, protected-entry counts, and LRU fallback events. More implementation details are in Section~\ref{sec:depot}.
+We extend Accel-Sim with four measurement modules: a \emph{miss arrival timeseries}
+recording every L2 TLB miss's arrival timestamp; \emph{dead-entry detection}, which
+tracks the last eviction cycle per VPN in a hash table and classifies a miss as
+dead-entry if the VPN appears there; an \emph{MSHR dead-slot timeseries}, sampling at
+100-cycle intervals the number of MSHR entries awaiting dead-entry re-walks, whose peak
+defines the \emph{burstiness} metric; and \emph{DEPOT protection statistics} (Bloom
+filter insert/hit counts, protected-entry counts, LRU fallback events; implementation
+details in Section~\ref{sec:depot}).
 
 \subsection{Workload Suite}
 Table~\ref{tab:workloads} characterizes all 24 workloads

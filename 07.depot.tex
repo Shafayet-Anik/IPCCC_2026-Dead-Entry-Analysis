@@ -59,24 +59,18 @@ The selected victim's VPN is inserted into the Bloom filter, refreshing the
 eviction history~\circnum{8}, and the victim's way index is forwarded to
 a small Stat Counter Block~\circnum{9} that records dead-entry-miss and
 protection-skip counts.
-This graceful degradation is a correctness property: it bounds the worst-case
-overhead of DEPOT to zero, since the fallback path is indistinguishable from
-baseline LRU. Two operational details keep the mechanism stable across long-running workloads.
-First, the filter is reset after every 1024 insertions rather than on a fixed
-time interval; this count-based threshold keeps the expected false-positive rate
-below 5\% while avoiding the temporal aliasing of a cycle-timer reset that could
-misfire across kernel boundaries.
-Second, a protection-state flush at each kernel boundary clears all protection
-timers, ensuring that a VPN evicted during kernel $K_n$ does not spuriously
-protect an entry in kernel $K_{n+1}$, where the same virtual address may map to
-a different physical frame after relaunch.
+This graceful degradation bounds DEPOT's worst-case overhead to zero, since the
+fallback path is indistinguishable from baseline LRU. Two details keep the
+mechanism stable long-run: the filter resets every 1024 insertions (a
+count-based threshold keeping expected false-positive rate below 5\% while
+avoiding the temporal aliasing a cycle-timer reset could cause across kernel
+boundaries), and protection state flushes at each kernel boundary so a VPN
+evicted in kernel $K_n$ cannot spuriously protect an entry in $K_{n+1}$, where
+the same virtual address may map to a different physical frame after relaunch.
 
-Regarding hardware cost, the Bloom filter occupies 1\,KB of storage.
-Each TLB entry requires one additional per-entry protection timer of 20 bits to record
-the expiry cycle, yielding $1024 \times 20 = 20\,\text{Kbits} = 2.5\,\text{KB}$ of
-per-entry SRAM across the full 1024-entry L2 TLB.
-The total overhead is therefore $1\,\text{KB} + 2.5\,\text{KB} = 3.5\,\text{KB}$,
-amortized across the existing TLB array. DEPOT's eviction-history Bloom filter is structurally similar to the evicted-address
-filter introduced by Seshadri et al.~\cite{evicted_addr_filter} for cache pollution and
-thrashing mitigation; we apply the same primitive at the TLB layer, where eviction-history
-information drives protection rather than insertion policy.
+Hardware cost is 1\,KB for the Bloom filter plus $1024 \times 20\,\text{bits} =
+2.5\,\text{KB}$ for the per-entry protection timers across the 1024-entry L2
+TLB, totaling 3.5\,KB amortized across the existing array. The design is
+structurally similar to the evicted-address filter of Seshadri et
+al.~\cite{evicted_addr_filter} for cache pollution/thrashing mitigation,
+applied here to drive protection rather than insertion policy.

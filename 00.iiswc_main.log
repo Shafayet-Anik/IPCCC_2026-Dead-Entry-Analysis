@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.8.2)  24 AUG 2026 22:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.8.2)  24 AUG 2026 22:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -759,20 +759,20 @@ File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 (./00.iiswc_main.aux)
 \openout1 = `00.iiswc_main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
 
 -- Lines per column: 58 (exact).
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -797,19 +797,19 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Info: Redefining \microtypecontext on input line 75.
-Package microtype Info: Applying patch `item' on input line 75.
-Package microtype Info: Applying patch `toc' on input line 75.
-Package microtype Info: Applying patch `eqnum' on input line 75.
-Package microtype Info: Applying patch `footnote' on input line 75.
-Package microtype Info: Applying patch `verbatim' on input line 75.
+LaTeX Info: Redefining \microtypecontext on input line 68.
+Package microtype Info: Applying patch `item' on input line 68.
+Package microtype Info: Applying patch `toc' on input line 68.
+Package microtype Info: Applying patch `eqnum' on input line 68.
+Package microtype Info: Applying patch `footnote' on input line 68.
+Package microtype Info: Applying patch `verbatim' on input line 68.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 75.
+LaTeX Info: Redefining \showhyphens on input line 68.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -820,7 +820,7 @@ File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    Trying to load font information for T1+phv on input line 10
-8.
+1.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
@@ -894,96 +894,65 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `pcr' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
+
+Underfull \vbox (badness 1199) has occurred while \output is active []
+
 LaTeX Font Info:    Calculating math sizes for size <7.02625> on input line 29.
 
- [3]
-Underfull \hbox (badness 3009) in paragraph at lines 83--103
+
+Underfull \hbox (badness 3009) in paragraph at lines 76--96
 []\T1/ptm/m/n/10.03749 (+20) Table 2[] char-ac-ter-izes all 24 work-loads (Clas
 ses:
  []
 
-) (./06.characterization.tex
-Underfull \vbox (badness 3942) has occurred while \output is active []
+[3]) (./06.characterization.tex
+Underfull \vbox (badness 1127) has occurred while \output is active []
 
-<figs/fig03_de_ratio_bars.pdf, id=118, 653.70665pt x 303.22598pt>
-File: figs/fig03_de_ratio_bars.pdf Graphic file (type pdf)
-<use figs/fig03_de_ratio_bars.pdf>
-Package pdftex.def Info: figs/fig03_de_ratio_bars.pdf  used on input line 22.
-(pdftex.def)             Requested size: 243.91125pt x 113.13573pt.
-<figs/fig04_de_ratio_vs_mpki.pdf, id=119, 550.02455pt x 265.78784pt>
+<figs/fig04_de_ratio_vs_mpki.pdf, id=118, 550.02455pt x 265.78784pt>
 File: figs/fig04_de_ratio_vs_mpki.pdf Graphic file (type pdf)
 <use figs/fig04_de_ratio_vs_mpki.pdf>
-Package pdftex.def Info: figs/fig04_de_ratio_vs_mpki.pdf  used on input line 35
+Package pdftex.def Info: figs/fig04_de_ratio_vs_mpki.pdf  used on input line 21
 .
 (pdftex.def)             Requested size: 243.91125pt x 117.86356pt.
- [4 <./figs/fig03_de_ratio_bars.pdf>]
-<figs/fig05_miss_arrival_timeseries.pdf, id=174, 438.54565pt x 317.41838pt>
-File: figs/fig05_miss_arrival_timeseries.pdf Graphic file (type pdf)
-<use figs/fig05_miss_arrival_timeseries.pdf>
-Package pdftex.def Info: figs/fig05_miss_arrival_timeseries.pdf  used on input 
-line 64.
-(pdftex.def)             Requested size: 243.91125pt x 176.54707pt.
- Excluding 'comment' comment.
-<figs/fig06_mshr_burstness.pdf, id=175, 500.26459pt x 211.71408pt>
+<figs/fig06_mshr_burstness.pdf, id=119, 500.26459pt x 211.71408pt>
 File: figs/fig06_mshr_burstness.pdf Graphic file (type pdf)
 <use figs/fig06_mshr_burstness.pdf>
-Package pdftex.def Info: figs/fig06_mshr_burstness.pdf  used on input line 105.
-
+Package pdftex.def Info: figs/fig06_mshr_burstness.pdf  used on input line 48.
 (pdftex.def)             Requested size: 243.91125pt x 103.22392pt.
-
-Excluding 'comment' comment. [5 <./figs/fig04_de_ratio_vs_mpki.pdf> <./figs/fig
-05_miss_arrival_timeseries.pdf> <./figs/fig06_mshr_burstness.pdf>]
-<figs/fig07_2mb_ipc_speedup.pdf, id=321, 434.48572pt x 209.10384pt>
+ [4 <./figs/fig04_de_ratio_vs_mpki.pdf>]
+<figs/fig07_2mb_ipc_speedup.pdf, id=174, 434.48572pt x 209.10384pt>
 File: figs/fig07_2mb_ipc_speedup.pdf Graphic file (type pdf)
 <use figs/fig07_2mb_ipc_speedup.pdf>
-Package pdftex.def Info: figs/fig07_2mb_ipc_speedup.pdf  used on input line 183
-.
+Package pdftex.def Info: figs/fig07_2mb_ipc_speedup.pdf  used on input line 81.
+
 (pdftex.def)             Requested size: 243.91125pt x 117.3845pt.
-)
-(./07.depot.tex
-<figs/fig8_DEPOT_mechanism_long.pdf, id=322, 312.98033pt x 270.3012pt>
+) (./07.depot.tex
+<figs/fig8_DEPOT_mechanism_long.pdf, id=175, 312.98033pt x 270.3012pt>
 File: figs/fig8_DEPOT_mechanism_long.pdf Graphic file (type pdf)
 <use figs/fig8_DEPOT_mechanism_long.pdf>
 Package pdftex.def Info: figs/fig8_DEPOT_mechanism_long.pdf  used on input line
  17.
 (pdftex.def)             Requested size: 243.91125pt x 210.65672pt.
- [6 <./figs/fig07_2mb_ipc_speedup.pdf> <./figs/fig8_DEPOT_mechanism_long.pdf>])
- (./08.evaluation.tex
-<figs/fig09_o3_ipc_gains.pdf, id=418, 572.50374pt x 270.6897pt>
+ [5 <./figs/fig06_mshr_burstness.pdf> <./figs/fig07_2mb_ipc_speedup.pdf> <./fig
+s/fig8_DEPOT_mechanism_long.pdf>]) (./08.evaluation.tex
+<figs/fig09_o3_ipc_gains.pdf, id=319, 572.50374pt x 270.6897pt>
 File: figs/fig09_o3_ipc_gains.pdf Graphic file (type pdf)
 <use figs/fig09_o3_ipc_gains.pdf>
 Package pdftex.def Info: figs/fig09_o3_ipc_gains.pdf  used on input line 9.
 (pdftex.def)             Requested size: 243.91125pt x 115.32452pt.
- Excluding 'comment' comment.
-<figs/fig11_o3gain_vs_mpki.pdf, id=419, 475.85901pt x 263.58577pt>
+<figs/fig11_o3gain_vs_mpki.pdf, id=320, 475.85901pt x 263.58577pt>
 File: figs/fig11_o3gain_vs_mpki.pdf Graphic file (type pdf)
 <use figs/fig11_o3gain_vs_mpki.pdf>
-Package pdftex.def Info: figs/fig11_o3gain_vs_mpki.pdf  used on input line 55.
+Package pdftex.def Info: figs/fig11_o3gain_vs_mpki.pdf  used on input line 32.
 (pdftex.def)             Requested size: 243.91125pt x 135.10667pt.
- [7 <./figs/fig09_o3_ipc_gains.pdf> <./figs/fig11_o3gain_vs_mpki.pdf>]
-<figs/fig13_param_sensitivity.pdf, id=554, 624.62479pt x 335.75377pt>
-File: figs/fig13_param_sensitivity.pdf Graphic file (type pdf)
-<use figs/fig13_param_sensitivity.pdf>
-Package pdftex.def Info: figs/fig13_param_sensitivity.pdf  used on input line 8
-2.
-(pdftex.def)             Requested size: 243.91125pt x 131.10738pt.
-
-Excluding 'comment' comment. Excluding 'comment' comment.
-<figs/fig10_ipc_comparison.pdf, id=555, 772.26567pt x 268.86284pt>
-File: figs/fig10_ipc_comparison.pdf Graphic file (type pdf)
-<use figs/fig10_ipc_comparison.pdf>
-Package pdftex.def Info: figs/fig10_ipc_comparison.pdf  used on input line 159.
-
-(pdftex.def)             Requested size: 243.91125pt x 84.91788pt.
- [8 <./figs/fig13_param_sensitivity.pdf> <./figs/fig10_ipc_comparison.pdf>]) (.
-/09.conclusion.tex)
-(./00.iiswc_main.bbl [9]
+ [6 <./figs/fig09_o3_ipc_gains.pdf> <./figs/fig11_o3gain_vs_mpki.pdf>]) (./09.c
+onclusion.tex) (./00.iiswc_main.bbl [7]
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
 76.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-) [10]
+) [8]
 Underfull \hbox (badness 2221) in paragraph at lines 274--277
 []\T1/ptm/m/n/8.03 (+20) NVIDIA Cor-po-ra-tion, ``NVIDIA GeForce RTX 3070 fam-i
 ly,''
@@ -1008,22 +977,22 @@ Before submitting the final camera ready copy, remember to:
  process uses the appropriate paper size.
 
 - LAST -
-Extra skip:33.56541pt
-Left:652.03537pt/0.0pt
-Right:494.54684pt/1.64212pt
-Output:510.42004pt
-[11] (./00.iiswc_main.aux)
+Extra skip:0.0pt
+Left:336.45647pt/1.64212pt
+Right:336.45647pt/1.64212pt
+Output:337.61076pt
+[9] (./00.iiswc_main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 21136 strings out of 476182
- 399655 string characters out of 5795596
- 1953975 words of memory out of 5000000
- 42180 multiletter control sequences out of 15000+600000
- 716780 words of font info for 530 fonts, out of 8000000 for 9000
+ 21081 strings out of 476182
+ 398170 string characters out of 5795596
+ 1951975 words of memory out of 5000000
+ 42143 multiletter control sequences out of 15000+600000
+ 716071 words of font info for 518 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  84i,12n,87p,1010b,642s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
@@ -1033,10 +1002,10 @@ ve/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/ur
 w/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on 00.iiswc_main.pdf (11 pages, 526457 bytes).
+Output written on 00.iiswc_main.pdf (9 pages, 434091 bytes).
 PDF statistics:
- 746 PDF objects out of 1000 (max. 8388607)
- 158 compressed objects within 2 object streams
+ 500 PDF objects out of 1000 (max. 8388607)
+ 130 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 113737 words of extra memory for PDF output out of 128383 (max. 10000000)
+ 113717 words of extra memory for PDF output out of 128383 (max. 10000000)
 
