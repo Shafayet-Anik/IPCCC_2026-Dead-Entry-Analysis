@@ -31,11 +31,22 @@ steady state. Below the gap, DE ratio spans near-zero to above 99\% with no
 relation to MPKI, confirming it carries no predictive power on its own.
 
 To connect this characterization to DEPOT's mechanism, we measure the
-eviction-to-reaccess distance for each dead-entry re-walk: across the nine
-TLB-sensitive workloads, 83--100\% of re-walks occur $\geq$1K cycles after
-eviction, with a modal bin of 10K--99K cycles for six of nine -- far exceeding
-what the 1024-entry L2 TLB can retain under LRU alone, and comfortably within
-DEPOT's default 500\,K-cycle protection window. Reuse distance itself, however,
+eviction-to-reaccess distance for each dead-entry re-walk. Figure~\ref{fig:reuse}
+shows the average distance per TLB-sensitive workload against DEPOT's default
+500\,K-cycle protection window: every workload's average sits well under the
+window, and across all nine, 83--100\% of individual re-walks occur $\geq$1K
+cycles after eviction, with a modal bin of 10K--99K cycles for six of nine --
+far exceeding what the 1024-entry L2 TLB can retain under LRU alone.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\figwidth]{figs/fig_reuse_distance.pdf}
+  \caption{Average eviction-to-reaccess distance per TLB-sensitive workload
+  vs.\ DEPOT's default protection window.}
+  \label{fig:reuse}
+\end{figure}
+
+\noindent Reuse distance itself, however,
 does not separate the two classes (\texttt{atax} and \texttt{bicg} show
 comparable distributions despite their opposite DEPOT response), reinforcing
 that access structure, not miss timing, is the discriminator developed next.

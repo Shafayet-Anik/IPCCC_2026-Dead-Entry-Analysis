@@ -87,36 +87,31 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Access Structure: The Class Discriminator}{4}{}\protected@file@percent }
 \newlabel{sec:char_burstness}{{5.2}{4}{}{}{}}
 \citation{bloom_filter}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces MSHR dead-slot occupancy over time for \texttt  {atax} and \texttt  {bicg}.}}{5}{}\protected@file@percent }
-\newlabel{fig:burstness}{{4}{5}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Average eviction-to-reaccess distance per TLB-sensitive workload vs.\ DEPOT's default protection window.}}{5}{}\protected@file@percent }
+\newlabel{fig:reuse}{{4}{5}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces MSHR dead-slot occupancy over time for \texttt  {atax} and \texttt  {bicg}.}}{5}{}\protected@file@percent }
+\newlabel{fig:burstness}{{5}{5}{}{}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Validating Capacity-Driven Misses}{5}{}\protected@file@percent }
 \newlabel{sec:char_2mb}{{5.3}{5}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces IPC speedup under 2\,MB pages over 4\,KB baseline for all 9 TLB-sensitive workloads.}}{5}{}\protected@file@percent }
-\newlabel{fig:de_2mb}{{5}{5}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces IPC speedup under 2\,MB pages over 4\,KB baseline for all 9 TLB-sensitive workloads.}}{5}{}\protected@file@percent }
+\newlabel{fig:de_2mb}{{6}{5}{}{}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {6}DEPOT: Dead-Entry PrOTection}{5}{}\protected@file@percent }
 \newlabel{sec:depot}{{6}{5}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces DEPOT mechanism: eviction-history Bloom filter, Pending Dead-Entry Set, per-entry protection timer, and protection-aware replacement cascade.}}{5}{}\protected@file@percent }
-\newlabel{fig:depot_mech}{{6}{5}{}{}{}}
 \citation{evicted_addr_filter}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces DEPOT mechanism: eviction-history Bloom filter, Pending Dead-Entry Set, per-entry protection timer, and protection-aware replacement cascade.}}{6}{}\protected@file@percent }
+\newlabel{fig:depot_mech}{{7}{6}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces IPC improvement of DEPOT over 4\,KB baseline for all 24 workloads, sorted descending.}}{6}{}\protected@file@percent }
+\newlabel{fig:o3_gains_bar}{{8}{6}{}{}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {7}Performance Evaluation and Analysis}{6}{}\protected@file@percent }
 \newlabel{sec:evaluation}{{7}{6}{}{}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {7.1}DEPOT Performance}{6}{}\protected@file@percent }
 \newlabel{sec:o3_real}{{7.1}{6}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces IPC improvement of DEPOT over 4\,KB baseline for all 24 workloads, sorted descending.}}{6}{}\protected@file@percent }
-\newlabel{fig:o3_gains_bar}{{7}{6}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces IPC improvement of DEPOT vs.\ L2 TLB MPKI for all 24 workloads.}}{6}{}\protected@file@percent }
-\newlabel{fig:o3_scatter}{{8}{6}{}{}{}}
 \citation{latpc}
 \bibstyle{IEEEtranS}
 \bibdata{reference}
 \bibcite{aamodt_book}{1}
-\bibcite{ampere_microbench}{2}
-\bibcite{amd64_manual}{3}
-\bibcite{mosaic}{4}
-\bibcite{avoiding_tlb}{5}
-\bibcite{gpgpusim}{6}
-\bibcite{barr_translation_caching}{7}
-\bibcite{pham_spectlb}{8}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces IPC improvement of DEPOT vs.\ L2 TLB MPKI for all 24 workloads.}}{7}{}\protected@file@percent }
+\newlabel{fig:o3_scatter}{{9}{7}{}{}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Class~A/B Asymmetry}{7}{}\protected@file@percent }
 \newlabel{sec:disc_classes}{{7.2}{7}{}{}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Composition with LatPC}{7}{}\protected@file@percent }
@@ -125,7 +120,13 @@
 \newlabel{sec:discussion}{{8}{7}{}{}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {9}Conclusion}{7}{}\protected@file@percent }
 \newlabel{sec:conclusion}{{9}{7}{}{}{}}
-\@writefile{toc}{\contentsline {section}{References}{7}{}\protected@file@percent }
+\bibcite{ampere_microbench}{2}
+\bibcite{amd64_manual}{3}
+\bibcite{mosaic}{4}
+\bibcite{avoiding_tlb}{5}
+\bibcite{gpgpusim}{6}
+\bibcite{barr_translation_caching}{7}
+\bibcite{pham_spectlb}{8}
 \bibcite{baruah_griffin}{9}
 \bibcite{valkyrie}{10}
 \bibcite{belady}{11}
@@ -157,6 +158,7 @@
 \bibcite{sdbp_micro10}{37}
 \bibcite{kim_batch}{38}
 \bibcite{cta_schedule}{39}
+\@writefile{toc}{\contentsline {section}{References}{8}{}\protected@file@percent }
 \bibcite{snakebyte}{40}
 \bibcite{star}{41}
 \bibcite{trans_fw}{42}
