@@ -36,13 +36,17 @@ shows the average distance per TLB-sensitive workload against DEPOT's default
 500\,K-cycle protection window: every workload's average sits well under the
 window, and across all nine, 83--100\% of individual re-walks occur $\geq$1K
 cycles after eviction, with a modal bin of 10K--99K cycles for six of nine --
-far exceeding what the 1024-entry L2 TLB can retain under LRU alone.
+far exceeding what the 1024-entry L2 TLB can retain under LRU alone. \texttt{dmr},
+\texttt{mst}, and \texttt{sssp} (hatched) reflect a baseline run that had not
+fully converged when measured; direction is consistent with the other six but
+exact values may shift.
 
 \begin{figure}[t]
   \centering
   \includegraphics[width=\figwidth]{figs/fig_reuse_distance.pdf}
   \caption{Average eviction-to-reaccess distance per TLB-sensitive workload
-  vs.\ DEPOT's default protection window.}
+  vs.\ DEPOT's default protection window. Hatched bars (\texttt{dmr},
+  \texttt{mst}, \texttt{sssp}) are from a partially-converged baseline.}
   \label{fig:reuse}
 \end{figure}
 

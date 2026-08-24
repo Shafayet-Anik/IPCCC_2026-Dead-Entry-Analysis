@@ -26,6 +26,8 @@ OUT = FIGS / "fig_reuse_distance.pdf"
 COLOR = {'A': '#d62728', 'B': '#1f77b4'}
 WINDOW = 500_000
 
+PARTIAL = {'dmr', 'mst', 'sssp'}
+
 rows = []
 with open(DATA) as f:
     for row in csv.DictReader(f):
@@ -38,7 +40,10 @@ fig, ax = plt.subplots(figsize=figsize(3.4, 2.6))
 
 x = range(len(rows))
 colors = [COLOR[r['cls']] for r in rows]
-ax.bar(x, [r['delta'] / 1000 for r in rows], color=colors, width=0.65, zorder=3)
+hatches = ['///' if r['wl'] in PARTIAL else None for r in rows]
+for xi, r, c, h in zip(x, rows, colors, hatches):
+    ax.bar(xi, r['delta'] / 1000, color=c, width=0.65, zorder=3,
+           hatch=h, edgecolor='black' if h else 'none', linewidth=0.6 if h else 0)
 ax.axhline(WINDOW / 1000, color='black', linestyle='--', linewidth=1.0, zorder=4)
 ax.text(0.3, WINDOW / 1000 + 15, 'DEPOT window (500K)',
         ha='left', va='bottom', fontsize=7.5)
@@ -51,8 +56,10 @@ ax.tick_params(axis='y', labelsize=8)
 ax.grid(axis='y', linestyle=':', linewidth=0.4, alpha=0.6)
 
 patches = [mpatches.Patch(color=COLOR['A'], label='Class A'),
-           mpatches.Patch(color=COLOR['B'], label='Class B')]
-ax.legend(handles=patches, fontsize=7.5, loc='center right')
+           mpatches.Patch(color=COLOR['B'], label='Class B'),
+           mpatches.Patch(facecolor='white', edgecolor='black', hatch='///',
+                           label='Partial baseline')]
+ax.legend(handles=patches, fontsize=7, loc='center right')
 
 plt.tight_layout()
 plt.savefig(OUT, format='pdf', bbox_inches='tight', pad_inches=0.03)
