@@ -30,6 +30,16 @@ ratio -- confirming near-unity DE ratio as a reliable marker of TLB-sensitive
 steady state. Below the gap, DE ratio spans near-zero to above 99\% with no
 relation to MPKI, confirming it carries no predictive power on its own.
 
+To connect this characterization to DEPOT's mechanism, we measure the
+eviction-to-reaccess distance for each dead-entry re-walk: across the nine
+TLB-sensitive workloads, 83--100\% of re-walks occur $\geq$1K cycles after
+eviction, with a modal bin of 10K--99K cycles for six of nine -- far exceeding
+what the 1024-entry L2 TLB can retain under LRU alone, and comfortably within
+DEPOT's default 500\,K-cycle protection window. Reuse distance itself, however,
+does not separate the two classes (\texttt{atax} and \texttt{bicg} show
+comparable distributions despite their opposite DEPOT response), reinforcing
+that access structure, not miss timing, is the discriminator developed next.
+
 \subsection{Access Structure: The Class Discriminator}
 \label{sec:char_burstness}
 
