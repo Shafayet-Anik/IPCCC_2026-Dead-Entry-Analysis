@@ -45,7 +45,7 @@ with open(DATA) as f:
 
 rows.sort(key=lambda r: r['delta'], reverse=True)
 
-fig, ax = plt.subplots(figsize=figsize(3.4, 1.55))
+fig, ax = plt.subplots(figsize=figsize(3.4, 1.85))
 
 x = range(len(rows))
 colors = [COLOR[r['cls']] for r in rows]
