@@ -30,6 +30,16 @@ ratio -- confirming near-unity DE ratio as a reliable marker of TLB-sensitive
 steady state. Below the gap, DE ratio spans near-zero to above 99\% with no
 relation to MPKI, confirming it carries no predictive power on its own.
 
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\figwidth]{figs/fig_reuse_distance.pdf}
+  \caption{Average eviction-to-reaccess distance (log scale) per workload
+  vs.\ DEPOT's default protection window, for all 21 workloads with
+  measurable dead-entry activity. Hatched bars are from partially-converged
+  baselines.}
+  \label{fig:reuse}
+\end{figure}
+
 To connect this characterization to DEPOT's mechanism, we measure the
 eviction-to-reaccess distance for each dead-entry re-walk across all 21
 workloads with measurable activity (\texttt{bfs}, \texttt{gaussian},
@@ -43,15 +53,6 @@ time to accumulate, this spread does not bear on protection efficacy.
 Five hatched bars reflect not-yet-converged baselines; direction matches
 the converged majority.
 
-\begin{figure}[t]
-  \centering
-  \includegraphics[width=\figwidth]{figs/fig_reuse_distance.pdf}
-  \caption{Average eviction-to-reaccess distance (log scale) per workload
-  vs.\ DEPOT's default protection window, for all 21 workloads with
-  measurable dead-entry activity. Hatched bars are from partially-converged
-  baselines.}
-  \label{fig:reuse}
-\end{figure}
 
 \noindent Reuse distance itself, however,
 does not separate the two classes (\texttt{atax} and \texttt{bicg} show
@@ -104,7 +105,7 @@ reach should eliminate their dead-entry misses. Figure~\ref{fig:de_2mb} shows
 IPC speedup under 2\,MB huge pages (L2 reach $4\,\text{MB}\rightarrow256\,\text{MB}$)
 over the 4\,KB baseline for all nine TLB-sensitive workloads.
 
-\begin{figure}[ht]
+\begin{figure}[t]
   \centering
   \includegraphics[width=\figwidth]{figs/fig07_2mb_ipc_speedup.pdf}
   \caption{IPC speedup under 2\,MB pages over 4\,KB baseline for all 9 TLB-sensitive workloads.}
