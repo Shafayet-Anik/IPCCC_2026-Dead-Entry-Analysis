@@ -74,9 +74,10 @@ patches = [mpatches.Patch(color=COLOR['A'], label='Class A (TLB-sens.)'),
            mpatches.Patch(color=COLOR['N'], label='Non-TLB-sensitive'),
            mpatches.Patch(facecolor='white', edgecolor='black', hatch='///',
                            label='Truncated-trace baseline')]
-ax.legend(handles=patches, fontsize=5.2, loc='upper right', ncol=1,
-          handlelength=1.2, handletextpad=0.4, borderpad=0.3, labelspacing=0.25,
-          bbox_to_anchor=(1.0, 0.82))
+leg = ax.legend(handles=patches, fontsize=5.2, loc='upper right', ncol=1,
+                 handlelength=1.2, handletextpad=0.4, borderpad=0.3, labelspacing=0.25,
+                 bbox_to_anchor=(1.0, 0.82), framealpha=0.55)
+leg.get_frame().set_linewidth(0.5)
 
 plt.tight_layout(pad=0.3)
 plt.savefig(OUT, format='pdf', bbox_inches='tight', pad_inches=0.02)
