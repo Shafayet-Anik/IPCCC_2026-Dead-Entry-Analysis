@@ -55,10 +55,10 @@ for xi, r, c, h in zip(x, rows, colors, hatches):
     ax.bar(xi, val, color=c, width=0.7, zorder=3,
            hatch=h, edgecolor='black' if h else 'none', linewidth=0.5 if h else 0)
 ax.axhline(WINDOW, color='black', linestyle='--', linewidth=0.9, zorder=4)
-ax.text(20.6, WINDOW * 1.35, 'DEPOT window (500K)', ha='right', va='bottom', fontsize=6)
+ax.text(20.6, WINDOW * 0.72, 'DEPOT window (500K)', ha='right', va='top', fontsize=6)
 
 ax.set_yscale('log')
-ax.set_ylim(bottom=20, top=9e6)
+ax.set_ylim(bottom=20, top=1.4e7)
 ax.yaxis.set_major_formatter(mticker.FuncFormatter(
     lambda v, _: f'{v/1e6:g}M' if v >= 1e6 else (f'{v/1e3:g}K' if v >= 1e3 else f'{v:g}')))
 
@@ -76,8 +76,7 @@ patches = [mpatches.Patch(color=COLOR['A'], label='Class A'),
                            label='Truncated-trace')]
 leg = ax.legend(handles=patches, fontsize=5.6, loc='upper center', ncol=4,
                  handlelength=1.1, handletextpad=0.35, borderpad=0.3, labelspacing=0.25,
-                 columnspacing=0.9, bbox_to_anchor=(0.60, 0.985), framealpha=0.55)
-leg.get_frame().set_linewidth(0.5)
+                 columnspacing=0.9, bbox_to_anchor=(0.60, 0.99), frameon=False)
 
 plt.tight_layout(pad=0.3)
 plt.savefig(OUT, format='pdf', bbox_inches='tight', pad_inches=0.02)
