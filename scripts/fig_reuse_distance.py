@@ -76,7 +76,7 @@ patches = [mpatches.Patch(color=COLOR['A'], label='Class A'),
                            label='Truncated-trace')]
 leg = ax.legend(handles=patches, fontsize=5.6, loc='upper center', ncol=4,
                  handlelength=1.1, handletextpad=0.35, borderpad=0.3, labelspacing=0.25,
-                 columnspacing=0.9, bbox_to_anchor=(0.60, 0.99), frameon=False)
+                 columnspacing=0.9, bbox_to_anchor=(0.46, 0.99), frameon=False)
 
 plt.tight_layout(pad=0.3)
 plt.savefig(OUT, format='pdf', bbox_inches='tight', pad_inches=0.02)
