@@ -14,44 +14,44 @@ Database file #1: reference.bib
 ** Sorting version - not for normal IEEE work.
 
 Done.
-You've used 65 entries,
+You've used 40 entries,
             4483 wiz_defined-function locations,
-            1134 strings with 19035 characters,
-and the built_in function-call counts, 45447 in all, are:
-= -- 3772
-> -- 1748
-< -- 49
-+ -- 828
-- -- 532
-* -- 2361
-:= -- 6999
-add.period$ -- 130
-call.type$ -- 65
-change.case$ -- 459
+            1053 strings with 14869 characters,
+and the built_in function-call counts, 27626 in all, are:
+= -- 2323
+> -- 992
+< -- 45
++ -- 471
+- -- 296
+* -- 1411
+:= -- 4282
+add.period$ -- 80
+call.type$ -- 40
+change.case$ -- 266
 chr.to.int$ -- 96
-cite$ -- 65
-duplicate$ -- 3040
-empty$ -- 3966
-format.name$ -- 588
-if$ -- 10040
+cite$ -- 40
+duplicate$ -- 1852
+empty$ -- 2389
+format.name$ -- 329
+if$ -- 6097
 int.to.chr$ -- 0
-int.to.str$ -- 65
-missing$ -- 662
-newline$ -- 218
-num.names$ -- 130
-pop$ -- 2124
+int.to.str$ -- 40
+missing$ -- 394
+newline$ -- 143
+num.names$ -- 80
+pop$ -- 1245
 preamble$ -- 1
-purify$ -- 395
+purify$ -- 227
 quote$ -- 2
-skip$ -- 3263
+skip$ -- 1999
 stack$ -- 0
-substring$ -- 617
-swap$ -- 1736
-text.length$ -- 17
+substring$ -- 464
+swap$ -- 1084
+text.length$ -- 13
 text.prefix$ -- 0
 top$ -- 6
-type$ -- 703
+type$ -- 428
 warning$ -- 0
-while$ -- 146
-width$ -- 67
-write$ -- 557
+while$ -- 96
+width$ -- 42
+write$ -- 353

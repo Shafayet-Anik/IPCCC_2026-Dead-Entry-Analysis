@@ -4,10 +4,10 @@
 Address translation is a first-order performance concern in modern GPU workloads~\cite{power_x86}.
 As applications move toward larger, irregular memory footprints such as sparse graph
 traversal, scientific stencils, and machine learning inference over large embedding tables,
-the GPU L2 TLB becomes a sustained bottleneck \cite{ganguly_interplay, shin_irregular}.
+the GPU L2 TLB becomes a sustained bottleneck \cite{shin_irregular}.
 Prior work has approached this problem almost exclusively from an access-pattern perspective,
 predicting which virtual pages will be needed next and prefetching their translations
-before the demand miss occurs~\cite{latpc,valkyrie, mosaic, snake_prefetch}.
+before the demand miss occurs~\cite{latpc,valkyrie,mosaic}.
 This framing implicitly treats each TLB miss as a cold event requiring a fresh page walk,
 but many TLB misses are not cold at all. A \emph{dead-entry TLB miss} occurs when a virtual page whose translation is still valid
 is evicted from the TLB and then re-accessed before the working set rotates again.

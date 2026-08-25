@@ -4,7 +4,7 @@
 \subsection{GPU Address Translation}
 
 Modern GPUs execute code in \emph{warps} of 32 lock-step
-threads~\cite{aamodt_book,che_gpgpu_study,garland_cuda}, so a single memory
+threads~\cite{aamodt_book}, so a single memory
 instruction can generate up to 32 virtual addresses at once. Coalescing~\cite{nyland_coalescing}
 reduces this when threads share a page, but memory-intensive workloads with
 large or strided access patterns routinely generate one or more unique VPNs
@@ -20,7 +20,7 @@ analog.
 \end{figure}
 
 Figure~\ref{fig:arch} shows the pipeline. Each SM hosts a private, fully-associative
-32-entry L1 TLB~\cite{pichai_gpu_translation,translation_cpu}, flushed at kernel boundaries; on the
+32-entry L1 TLB~\cite{pichai_gpu_translation}, flushed at kernel boundaries; on the
 Ampere SM86 microarchitecture~\cite{nvidia_ampere} studied here, 46 SMs
 operate independently. An L1 miss allocates an MSHR entry; a second request
 for the same in-flight VPN merges into it rather than issuing a duplicate
@@ -37,7 +37,7 @@ depend on stalls all of them at once when re-walked -- the mechanism
 behind both the disproportionate cost of a dead-entry miss and the
 disproportionate recovery from protecting one. This PTW bottleneck is the
 primary reason TLB behavior dominates performance in translation-sensitive
-GPU workloads~\cite{pichai_gpu_translation,avoiding_tlb,latpc}.
+GPU workloads~\cite{avoiding_tlb,latpc}.
 
 \subsection{Dead-Entry TLB Misses}
 
