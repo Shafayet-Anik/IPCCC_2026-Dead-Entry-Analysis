@@ -35,7 +35,7 @@ relation to MPKI, confirming it carries no predictive power on its own.
   \includegraphics[width=\figwidth]{figs/fig_reuse_distance.pdf}
   \caption{Average eviction-to-reaccess distance (log scale) per workload
   vs.\ DEPOT's default protection window, for all 21 workloads with
-  measurable dead-entry activity. Hatched bars are from partially-converged
+  measurable dead-entry activity. Hatched bars are from truncated-trace
   baselines.}
   \label{fig:reuse}
 \end{figure}
@@ -50,8 +50,8 @@ re-walks $\geq$1K cycles after eviction), far exceeding what 1024 LRU
 entries retain alone. Non-TLB-sensitive workloads span a wider range
 (300 cycles to 1.66\,M), but since their miss rates are too low for stall
 time to accumulate, this spread does not bear on protection efficacy.
-Four hatched bars reflect not-yet-converged baselines; direction matches
-the converged majority.
+Four hatched bars reflect truncated-trace baselines; direction matches
+the fully-traced majority.
 
 
 \noindent Reuse distance itself, however,

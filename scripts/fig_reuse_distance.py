@@ -73,7 +73,7 @@ patches = [mpatches.Patch(color=COLOR['A'], label='Class A (TLB-sens.)'),
            mpatches.Patch(color=COLOR['B'], label='Class B (TLB-sens.)'),
            mpatches.Patch(color=COLOR['N'], label='Non-TLB-sensitive'),
            mpatches.Patch(facecolor='white', edgecolor='black', hatch='///',
-                           label='Partial baseline')]
+                           label='Truncated-trace baseline')]
 ax.legend(handles=patches, fontsize=5.2, loc='upper right', ncol=1,
           handlelength=1.2, handletextpad=0.4, borderpad=0.3, labelspacing=0.25,
           bbox_to_anchor=(1.0, 0.82))
