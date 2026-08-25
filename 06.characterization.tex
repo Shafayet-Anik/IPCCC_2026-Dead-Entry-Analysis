@@ -31,22 +31,25 @@ steady state. Below the gap, DE ratio spans near-zero to above 99\% with no
 relation to MPKI, confirming it carries no predictive power on its own.
 
 To connect this characterization to DEPOT's mechanism, we measure the
-eviction-to-reaccess distance for each dead-entry re-walk. Figure~\ref{fig:reuse}
-shows the average distance per TLB-sensitive workload against DEPOT's default
-500\,K-cycle protection window: every workload's average sits well under the
-window, and across all nine, 83--100\% of individual re-walks occur $\geq$1K
-cycles after eviction, with a modal bin of 10K--99K cycles for six of nine --
-far exceeding what the 1024-entry L2 TLB can retain under LRU alone. \texttt{dmr},
-\texttt{mst}, and \texttt{sssp} (hatched) reflect a baseline run that had not
-fully converged when measured; direction is consistent with the other six but
-exact values may shift.
+eviction-to-reaccess distance for each dead-entry re-walk across all 21
+workloads with measurable activity (\texttt{bfs}, \texttt{gaussian},
+\texttt{parboil-bfs} have none). Figure~\ref{fig:reuse} plots the average
+distance per workload, log-scaled, against DEPOT's 500\,K-cycle window. All
+nine TLB-sensitive workloads sit at or below the window (83--100\% of
+re-walks $\geq$1K cycles after eviction), far exceeding what 1024 LRU
+entries retain alone. Non-TLB-sensitive workloads span a wider range
+(300 cycles to 1.66\,M), but since their miss rates are too low for stall
+time to accumulate, this spread does not bear on protection efficacy.
+Five hatched bars reflect not-yet-converged baselines; direction matches
+the converged majority.
 
 \begin{figure}[t]
   \centering
   \includegraphics[width=\figwidth]{figs/fig_reuse_distance.pdf}
-  \caption{Average eviction-to-reaccess distance per TLB-sensitive workload
-  vs.\ DEPOT's default protection window. Hatched bars (\texttt{dmr},
-  \texttt{mst}, \texttt{sssp}) are from a partially-converged baseline.}
+  \caption{Average eviction-to-reaccess distance (log scale) per workload
+  vs.\ DEPOT's default protection window, for all 21 workloads with
+  measurable dead-entry activity. Hatched bars are from partially-converged
+  baselines.}
   \label{fig:reuse}
 \end{figure}
 
