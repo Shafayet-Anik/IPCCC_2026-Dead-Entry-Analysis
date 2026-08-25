@@ -10,8 +10,12 @@ Source: log_files/results_0709_R1-burst_bigmem72/, commit d4e4e88 fix,
 re-extracted directly from L2DeadEntryDeltaAvgCycles/Histogram (final
 cumulative stat per log); cross-checked against incline's independent
 extraction for the 10 confirmed-complete non-TLB-sensitive workloads
-(9/10 matched within rounding). dmr/mst/sssp/mri-gridding/gramschmidt
-were partial snapshots when measured (direction reliable, hatched).
+(9/10 matched within rounding). dmr/mst/sssp/gramschmidt were partial
+snapshots when measured (direction reliable, hatched). mri-gridding
+uses incline's full-trace rerun: its earlier partial trace stopped
+before the benchmark's actual gridding_GPU kernel ever ran, so the
+prior number reflected preprocessing only -- this is the corrected,
+complete result, not a partial one.
 """
 import csv
 from pathlib import Path
@@ -31,7 +35,7 @@ OUT = FIGS / "fig_reuse_distance.pdf"
 
 COLOR = {'A': '#d62728', 'B': '#1f77b4', 'N': '#7f7f7f'}
 WINDOW = 500_000
-PARTIAL = {'dmr', 'mst', 'sssp', 'mri-gridding', 'gramschmidt'}
+PARTIAL = {'dmr', 'mst', 'sssp', 'gramschmidt'}
 
 rows = []
 with open(DATA) as f:
