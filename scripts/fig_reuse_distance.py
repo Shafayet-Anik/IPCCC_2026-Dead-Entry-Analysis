@@ -64,10 +64,12 @@ ax.grid(axis='y', which='major', linestyle=':', linewidth=0.3, alpha=0.6)
 
 patches = [mpatches.Patch(color=COLOR['A'], label='Class A'),
            mpatches.Patch(color=COLOR['B'], label='Class B'),
-           mpatches.Patch(color=COLOR['N'], label='Non-TLB-sens.')]
+           mpatches.Patch(color=COLOR['N'], label='Not TLB-sensitive')]
 leg = ax.legend(handles=patches, fontsize=5.6, loc='upper center', ncol=3,
-                 handlelength=1.1, handletextpad=0.35, borderpad=0.3, labelspacing=0.25,
-                 columnspacing=0.9, bbox_to_anchor=(0.50, 0.99), frameon=False)
+                 handlelength=1.1, handletextpad=0.35, borderpad=0.35, labelspacing=0.25,
+                 columnspacing=0.9, bbox_to_anchor=(0.50, 0.99), frameon=True,
+                 framealpha=0.55, edgecolor='0.7')
+leg.get_frame().set_linewidth(0.5)
 
 plt.tight_layout(pad=0.3)
 plt.savefig(OUT, format='pdf', bbox_inches='tight', pad_inches=0.02)
