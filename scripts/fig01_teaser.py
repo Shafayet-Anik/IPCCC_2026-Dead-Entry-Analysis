@@ -208,10 +208,10 @@ draw_panel(axes[1], key='mpki',
            xscale='log',
            xlabel='L2 TLB MPKI\n(log scale)')
 
-# Panel (c): Burstness — clean separation
+# Panel (c): Burstiness — clean separation
 draw_panel(axes[2], key='burst',
            label='c',
-           xlabel='Burstness')
+           xlabel='Burstiness')
 
 # Shared y-range; top tick at 80 shown without label
 Y_TICKS = [0, 20, 40, 60, 80]
@@ -243,10 +243,10 @@ for _ax, _xl in zip(axes[:2], (
     'L2 TLB MPKI\n(log scale)',
 )):
     _ax.set_xlabel(_xl, fontsize=XLABEL_FS, labelpad=XLABEL_PAD, linespacing=1.05)
-axes[2].set_xlabel('Burstness', fontsize=XLABEL_FS, labelpad=XLABEL_PAD, linespacing=1.05)
+axes[2].set_xlabel('Burstiness', fontsize=XLABEL_FS, labelpad=XLABEL_PAD, linespacing=1.05)
 fig.canvas.draw()
 _renderer = fig.canvas.get_renderer()
-# Line 2 just below "Burstness" (not aligned to (b) block bottom)
+# Line 2 just below "Burstiness" (not aligned to (b) block bottom)
 _l1_bb = axes[2].xaxis.label.get_window_extent(_renderer)
 _cx = (_l1_bb.x0 + _l1_bb.x1) / 2
 _y2_disp = _l1_bb.y0 - XLABEL_C_LINE_GAP_PT * fig.dpi / 72.0
