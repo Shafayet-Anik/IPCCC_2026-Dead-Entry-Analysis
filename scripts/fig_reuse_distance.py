@@ -58,7 +58,7 @@ ax.axhline(WINDOW, color='black', linestyle='--', linewidth=0.9, zorder=4)
 ax.text(20.6, WINDOW * 1.35, 'DEPOT window (500K)', ha='right', va='bottom', fontsize=6)
 
 ax.set_yscale('log')
-ax.set_ylim(bottom=20, top=4e6)
+ax.set_ylim(bottom=20, top=9e6)
 ax.yaxis.set_major_formatter(mticker.FuncFormatter(
     lambda v, _: f'{v/1e6:g}M' if v >= 1e6 else (f'{v/1e3:g}K' if v >= 1e3 else f'{v:g}')))
 
@@ -69,14 +69,14 @@ ax.tick_params(axis='y', labelsize=6, pad=1)
 ax.tick_params(axis='x', pad=1)
 ax.grid(axis='y', which='major', linestyle=':', linewidth=0.3, alpha=0.6)
 
-patches = [mpatches.Patch(color=COLOR['A'], label='Class A (TLB-sens.)'),
-           mpatches.Patch(color=COLOR['B'], label='Class B (TLB-sens.)'),
-           mpatches.Patch(color=COLOR['N'], label='Non-TLB-sensitive'),
+patches = [mpatches.Patch(color=COLOR['A'], label='Class A'),
+           mpatches.Patch(color=COLOR['B'], label='Class B'),
+           mpatches.Patch(color=COLOR['N'], label='Non-TLB-sens.'),
            mpatches.Patch(facecolor='white', edgecolor='black', hatch='///',
-                           label='Truncated-trace baseline')]
-leg = ax.legend(handles=patches, fontsize=5.2, loc='upper right', ncol=1,
-                 handlelength=1.2, handletextpad=0.4, borderpad=0.3, labelspacing=0.25,
-                 bbox_to_anchor=(1.0, 0.82), framealpha=0.55)
+                           label='Truncated-trace')]
+leg = ax.legend(handles=patches, fontsize=5.6, loc='upper center', ncol=4,
+                 handlelength=1.1, handletextpad=0.35, borderpad=0.3, labelspacing=0.25,
+                 columnspacing=0.9, bbox_to_anchor=(0.60, 0.985), framealpha=0.55)
 leg.get_frame().set_linewidth(0.5)
 
 plt.tight_layout(pad=0.3)
